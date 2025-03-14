@@ -1,8 +1,8 @@
-# Pulse Game Jam 2025
+# Retropair
 
 
 ## Credits
-- Gregor Sönnichsen (?)
+- Gregor Sönnichsen (tech art)
 - Daniel Schulz (programming)
 - Katharina Broswik (tech art)
 

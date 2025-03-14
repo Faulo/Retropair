@@ -43,7 +43,7 @@ pipeline {
 						STEAM_CREDENTIALS = ''
 
 						// configuration for deploying to itch
-						ITCH_ID = ''
+						ITCH_ID = 'gregorsoenn/retropair'
 						ITCH_CREDENTIALS = 'Faulo-itch.io'
 
 						// configuration for deploying to Discord

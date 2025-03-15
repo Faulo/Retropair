@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,12 @@ namespace Runtime {
 
         [SerializeField]
         internal Device heldDevice;
+
+        public static event Action onDialogueLineAdvanceIntent;
+
+        public void OnAdvanceDialogueLine(InputValue input) {
+            onDialogueLineAdvanceIntent.Invoke();
+        }
 
         public void OnClick(InputValue input) {
             if (!input.isPressed) {

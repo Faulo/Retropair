@@ -1,3 +1,4 @@
+using System;
 using Runtime;
 using UnityEditor;
 using UnityEngine;
@@ -25,7 +26,8 @@ namespace Editor {
                     }
 
                     var part = renderer.gameObject.AddComponent<DevicePart>();
-                    part.id = $"{gameObject.name}.{renderer.name}";
+                    part.deviceId = Enum.Parse<DeviceId>(gameObject.name.Replace("Device_", ""));
+                    part.partId = Enum.Parse<PartId>(renderer.name.Replace("_", ""));
                     part.LoadFromBounds(renderer.bounds);
 
                     var collider = renderer.gameObject.AddComponent<MeshCollider>();

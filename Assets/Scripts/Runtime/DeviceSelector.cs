@@ -81,7 +81,7 @@ namespace Runtime {
             }
 
             selectedSlots.Clear();
-            selectedSlots.AddRange(slots.Values);
+            selectedSlots.AddRange(slots.Where(slot => slot.Key < surfaceDistance).Select(slot => slot.Value));
         }
     }
 }

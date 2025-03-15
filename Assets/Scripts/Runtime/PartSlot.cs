@@ -5,6 +5,8 @@ namespace Runtime {
     sealed class PartSlot : MonoBehaviour {
         [SerializeField]
         DevicePart referencePart;
+        [SerializeField]
+        bool mustFitExactly = true;
 
         void OnValidate() {
             if (!referencePart) {
@@ -19,8 +21,14 @@ namespace Runtime {
         internal bool isCorrect => transform.TryGetComponentInChildren<DevicePart>(out var part) && referencePart.id == part.id;
 
         internal bool TryFit(Device device) {
-            if (!referencePart.bounds.Approximately(device.bounds.bounds)) {
-                return false;
+            if (mustFitExactly) {
+                if (!referencePart.bounds.Approximately(device.bounds.bounds)) {
+                    return false;
+                }
+            } else {
+                if (!referencePart.bounds.CanContain(device.bounds.bounds)) {
+                    return false;
+                }
             }
 
             device.transform.parent = transform;

@@ -1,5 +1,4 @@
 using Runtime;
-using Slothsoft.UnityExtensions;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,8 +15,6 @@ namespace Editor {
                 if (renderer.name.EndsWith("_Modifier")) {
                     renderer.gameObject.SetActive(false);
                 } else {
-                    var bounds = renderer.bounds;
-
                     if (MaterialStorage.instance) {
                         var materials = renderer.sharedMaterials;
                         for (int i = 0; i < materials.Length; i++) {
@@ -29,9 +26,7 @@ namespace Editor {
 
                     var part = renderer.gameObject.AddComponent<DevicePart>();
                     part.id = $"{gameObject.name}.{renderer.name}";
-                    part.bounds = bounds;
-                    part.pivot = bounds.center.WithY(bounds.min.y);
-                    part.tileSize = GridUtils.WorldToTileSize(bounds.size.SwizzleXZ());
+                    part.LoadFromBounds(renderer.bounds);
 
                     var collider = renderer.gameObject.AddComponent<MeshCollider>();
                     collider.convex = false;

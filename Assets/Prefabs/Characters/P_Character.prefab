@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1252302698586464303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6070151765035201637}
+  m_Layer: 0
+  m_Name: ConsoleSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6070151765035201637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252302698586464303}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2904237363045507980}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8966204509778349797
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +43,7 @@ GameObject:
   - component: {fileID: 2178326681127055222}
   - component: {fileID: 1899386572832800348}
   - component: {fileID: 4844445655078532861}
+  - component: {fileID: 8079891254811170481}
   m_Layer: 0
   m_Name: P_Character
   m_TagString: Untagged
@@ -29,9 +61,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6070151765035201637}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2178326681127055222
@@ -102,8 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2178326681127055222}
-  moodToSpriteMap:
-    items: []
+  character: {fileID: 8079891254811170481}
 --- !u!114 &4844445655078532861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,24 +148,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c7e1f216297f1479ff6723af0f1ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onMoodChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1899386572832800348}
-        m_TargetAssemblyTypeName: CharacterMoodSpriteManager, Runtime
-        m_MethodName: OnMoodChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onLineChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  onMonologFinished:
-    m_PersistentCalls:
-      m_Calls: []
+  lineDelaySeconds: 3
+--- !u!114 &8079891254811170481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8966204509778349797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78cf1c3c3b6c2294ba9dd6a49b0d8d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inkJSON: {fileID: 0}
+  moodToSpriteMap:
+    items: []
+  consolePrefab: {fileID: 0}
+  consoleSpawnPoint: {fileID: 1252302698586464303}

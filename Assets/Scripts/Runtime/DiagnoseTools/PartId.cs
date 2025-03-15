@@ -1,5 +1,6 @@
 ﻿namespace Runtime {
     enum PartId {
+        Unknown,
         CartridgeSlot,
         EjectButton,
         EjectFlap,

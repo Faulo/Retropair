@@ -1,3 +1,4 @@
+using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 namespace Runtime {
@@ -6,6 +7,10 @@ namespace Runtime {
         PartSlot slot;
         [SerializeField]
         ScanStatus status;
+        [SerializeField]
+        SerializableKeyValuePairs<ScanStatus, Color> colors = new();
+        [SerializeField]
+        Renderer attachedRenderer;
 
         void OnEnable() {
             slot.onAttachDevice += UpdateStatus;
@@ -18,10 +23,16 @@ namespace Runtime {
 
         void UpdateStatus(Device device) {
             status = CalculateStatus(device);
+            UpdateColor();
         }
 
         void UpdateStatus() {
             status = ScanStatus.Nothing;
+            UpdateColor();
+        }
+
+        void UpdateColor() {
+            attachedRenderer.material.SetColor("_BaseColor", colors[status]);
         }
 
         ScanStatus CalculateStatus(Device attachedDevice) {

@@ -7,7 +7,6 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
 {
     public float lineDelaySeconds = 3.0f;
 
-    public static event Action<CharacterMood> onMoodChanged;
     public static event Action<string> onLineChanged;
     public static event Action onMonologFinished;
 
@@ -15,10 +14,14 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
 
     Coroutine currentMonologCoroutine = default;
 
-    bool isMonologPlaying = false;
+    bool lineAdvanceRequested = false;
 
-    public void Start() {
-        onMoodChanged?.Invoke(CharacterMood.Sad);
+    void Start() {
+        Runtime.Player.onDialogueLineAdvanceIntent += HandleLineAdvanceIntent;
+    }
+
+    void OnDestroy() {
+        Runtime.Player.onDialogueLineAdvanceIntent -= HandleLineAdvanceIntent;
     }
 
     public void SetMonolog(CharacterDefinition monologProvider) {
@@ -49,14 +52,16 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
     IEnumerator PlayLines() {
         while (currentStory.canContinue) {
 
-            isMonologPlaying = true;
             string currentLine = currentStory.Continue();
             onLineChanged?.Invoke(currentLine);
 
-            yield return new WaitForSeconds(lineDelaySeconds);
+            yield return new WaitUntil(() => lineAdvanceRequested);
+            lineAdvanceRequested = false;
         }
-
-        isMonologPlaying = false;
         onMonologFinished?.Invoke();
+    }
+
+    void HandleLineAdvanceIntent() {
+        lineAdvanceRequested = true;
     }
 }

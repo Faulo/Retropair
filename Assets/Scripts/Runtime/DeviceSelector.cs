@@ -15,6 +15,8 @@ namespace Runtime {
         internal Vector3 surfacePosition;
         [SerializeField]
         internal List<PartSlot> selectedSlots = new();
+        [SerializeField]
+        internal float maxReach = 5;
 
         void Update() {
             if (!mainCamera) {
@@ -31,13 +33,13 @@ namespace Runtime {
 
             var ray = mainCamera.ScreenPointToRay(position);
 
-            GetDevices(ray, ref surfacePosition);
+            GetDevices(ray);
         }
 
         static readonly List<Device> list = new();
         static readonly RaycastHit[] hits = new RaycastHit[32];
 
-        void GetDevices(in Ray ray, ref Vector3 surfacePosition) {
+        void GetDevices(in Ray ray) {
             innerSelection = default;
             outerSelection = default;
 

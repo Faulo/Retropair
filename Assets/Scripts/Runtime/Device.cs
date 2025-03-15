@@ -45,5 +45,17 @@ namespace Runtime {
             device = default;
             return false;
         }
+
+        internal bool TryGetSlotById(DeviceId deviceId, PartId partId, out PartSlot slot) {
+            foreach (var d in GetComponentsInChildren<PartSlot>()) {
+                if (d.referenceDeviceId == deviceId && d.referencePartId == partId) {
+                    slot = d;
+                    return true;
+                }
+            }
+
+            slot = default;
+            return false;
+        }
     }
 }

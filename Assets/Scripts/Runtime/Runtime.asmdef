@@ -6,7 +6,8 @@
         "MyBox",
         "Unity.InputSystem",
         "Ink-Libraries",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "Unity.Cinemachine"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

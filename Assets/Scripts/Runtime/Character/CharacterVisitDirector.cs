@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,6 +19,7 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
     [Header("Events")]
     public UnityEvent<CharacterDefinition> onCharacterMonologRequested;
     public UnityEvent<CharacterMonologSection> onCharacterMonologSectionRequested;
+    public static event Action<CharacterMood> onMoodChanged;
 
     uint currentVisitorIndex = 0;
     CharacterDefinition currentVisitorDefinition = default;
@@ -28,13 +30,15 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
 
     IEnumerator Start() {
         while (true) {
-            // next visitor
-            ChooseNextVisitor();
             yield return new WaitForSeconds(visitorArrivalDelay);
+
+            // next visitor arrival
+            ChooseNextVisitor();
             SpawnVisitor();
             monologPlayer.SetMonolog(currentVisitorDefinition);
 
             // arrival monolog
+            onMoodChanged?.Invoke(CharacterMood.Initial);
             yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Arrival);
 
             // spawn console and trigger main monolog
@@ -47,6 +51,7 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
 
                 // fail monolog if device was returned, but requirements not met
                 if (isDeviceReturned) {
+                    onMoodChanged?.Invoke(CharacterMood.Deny);
                     yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Failure);
                 }
 
@@ -55,6 +60,7 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
 
             // device was returned successfully
             DisallowInteractionWithVisitorConsole();
+            onMoodChanged?.Invoke(CharacterMood.Success);
             yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Success);
 
             // success monolog done, cleanup scene

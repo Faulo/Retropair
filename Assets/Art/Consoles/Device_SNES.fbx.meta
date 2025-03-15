@@ -3,7 +3,27 @@ guid: bd0e8db849879e845b75fa81a87d017b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Button
+    second: {fileID: -876546973899608171, guid: a29cf5744a56a3d449c174226114817a, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hull_Dark
+    second: {fileID: -876546973899608171, guid: a29cf5744a56a3d449c174226114817a, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hull_Light
+    second: {fileID: -876546973899608171, guid: a29cf5744a56a3d449c174226114817a, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mainboard
+    second: {fileID: -876546973899608171, guid: a29cf5744a56a3d449c174226114817a, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -88,7 +108,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.099999994
+    globalScale: 10
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

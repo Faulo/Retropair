@@ -3,7 +3,27 @@ guid: e1c912310cd8ce84a9421697da0370aa
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Button
+    second: {fileID: 2100000, guid: 022f4fe413a609d479fbe099c82f6e99, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hull_Dark
+    second: {fileID: 2100000, guid: 022f4fe413a609d479fbe099c82f6e99, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hull_Light
+    second: {fileID: 2100000, guid: 022f4fe413a609d479fbe099c82f6e99, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mainboard
+    second: {fileID: 2100000, guid: 022f4fe413a609d479fbe099c82f6e99, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

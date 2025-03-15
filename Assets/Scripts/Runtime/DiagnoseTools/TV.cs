@@ -1,3 +1,4 @@
+using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 namespace Runtime {
@@ -6,6 +7,10 @@ namespace Runtime {
         PartSlot slot;
         [SerializeField]
         TVStatus status;
+        [SerializeField]
+        SerializableKeyValuePairs<TVStatus, Color> colors = new();
+        [SerializeField]
+        Renderer attachedRenderer;
 
         void OnEnable() {
             slot.onAttachDevice += UpdateStatus;
@@ -18,10 +23,16 @@ namespace Runtime {
 
         void UpdateStatus(Device device) {
             status = CalculateStatus(device);
+            UpdateColor();
         }
 
         void UpdateStatus() {
             status = TVStatus.Nothing;
+            UpdateColor();
+        }
+
+        void UpdateColor() {
+            attachedRenderer.material.SetColor("_BaseColor", colors[status]);
         }
 
         TVStatus CalculateStatus(Device attachedDevice) {

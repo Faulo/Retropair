@@ -93,11 +93,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SS_Nickl_0
+      name: SS_Nickl_Deny
       rect:
         serializedVersion: 2
         x: 0
@@ -119,7 +132,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_Nickl_1
+      name: SS_Nickl_Idle
       rect:
         serializedVersion: 2
         x: 1080
@@ -141,7 +154,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_Nickl_2
+      name: SS_Nickl_Initial
       rect:
         serializedVersion: 2
         x: 0
@@ -163,7 +176,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_Nickl_3
+      name: SS_Nickl_Success
       rect:
         serializedVersion: 2
         x: 1080
@@ -185,7 +198,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_Nickl_4
+      name: SS_Nickl_Blink
       rect:
         serializedVersion: 2
         x: 2160
@@ -220,11 +233,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SS_Nickl_0: -1429384524
-      SS_Nickl_1: -79930737
-      SS_Nickl_2: 909068827
-      SS_Nickl_3: -725265162
-      SS_Nickl_4: -1310043769
+      SS_Nickl_Blink: -1310043769
+      SS_Nickl_Deny: -1429384524
+      SS_Nickl_Idle: -79930737
+      SS_Nickl_Initial: 909068827
+      SS_Nickl_Success: -725265162
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

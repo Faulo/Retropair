@@ -6,14 +6,14 @@ public sealed class CharacterMoodSpriteManager : MonoBehaviour
 {
     [SerializeField]
     SpriteRenderer spriteRenderer = default;
-
+    
     [SerializeField]
-    SerializableKeyValuePairs<CharacterMood, Sprite> moodToSpriteMap = default;
+    CharacterDefinition character = default;
 
     CharacterMood currentMood = CharacterMood.Sad;
 
     public void Start() {
-        spriteRenderer.sprite = moodToSpriteMap[currentMood];
+        spriteRenderer.sprite = character.moodToSpriteMap[currentMood];
         CharacterMonologPlayer.onMoodChanged += OnMoodChanged;
     }
 
@@ -25,9 +25,9 @@ public sealed class CharacterMoodSpriteManager : MonoBehaviour
         if (currentMood == newMood) {
             return;
         }
-        if (moodToSpriteMap.ContainsKey(newMood)) {
+        if (character.moodToSpriteMap.ContainsKey(newMood)) {
             currentMood = newMood;
-            spriteRenderer.sprite = moodToSpriteMap[currentMood];
+            spriteRenderer.sprite = character.moodToSpriteMap[currentMood];
         }
     }
 }

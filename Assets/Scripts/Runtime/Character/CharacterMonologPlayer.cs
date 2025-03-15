@@ -15,15 +15,21 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
 
     Coroutine currentMonologCoroutine = default;
 
+    bool isMonologPlaying = false;
+
     public void Start() {
         onMoodChanged?.Invoke(CharacterMood.Sad);
     }
 
-    public void PlayMonolog(CharacterMonologProvider monologProvider) {
+    public void SetMonolog(CharacterDefinition monologProvider) {
         if (currentStory == monologProvider.GetStory()) {
             return;
         }
         currentStory = monologProvider.GetStory();
+    }
+
+    public void PlayMonologParallel(CharacterMonologSection section) {
+        currentStory?.ChoosePathString(section.ToString());
 
         if (currentMonologCoroutine != null) {
             StopCoroutine(currentMonologCoroutine);
@@ -31,18 +37,26 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
         currentMonologCoroutine = StartCoroutine(PlayLines());
     }
 
-    public void JumpToSection(CharacterMonologSection section) {
+    public IEnumerator PlayMonologBlocking(CharacterMonologSection section) {
         currentStory?.ChoosePathString(section.ToString());
+
+        if (currentMonologCoroutine != null) {
+            StopCoroutine(currentMonologCoroutine);
+        }
+        yield return PlayLines();
     }
 
     IEnumerator PlayLines() {
         while (currentStory.canContinue) {
 
+            isMonologPlaying = true;
             string currentLine = currentStory.Continue();
             onLineChanged?.Invoke(currentLine);
 
             yield return new WaitForSeconds(lineDelaySeconds);
         }
+
+        isMonologPlaying = false;
         onMonologFinished?.Invoke();
     }
 }

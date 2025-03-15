@@ -40,7 +40,9 @@ namespace Runtime {
                 heldDevice = default;
             } else {
                 foreach (var slot in selector.selectedSlots) {
-                    if (slot.TryFit(heldDevice)) {
+                    if (slot.CanFit(heldDevice)) {
+                        heldDevice.transform.parent = slot.transform;
+                        heldDevice.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
                         heldDevice.isTangible = true;
                         heldDevice = default;
                         return;
@@ -54,6 +56,7 @@ namespace Runtime {
                 heldDevice = device;
                 heldDevice.isTangible = false;
                 heldDevice.transform.parent = transform;
+                heldDevice.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
                 UpdateHeldDevice();
             }
         }

@@ -20,7 +20,7 @@ namespace Runtime {
 
         internal bool isCorrect => transform.TryGetComponentInChildren<DevicePart>(out var part) && referencePart.id == part.id;
 
-        internal bool TryFit(Device device) {
+        internal bool CanFit(Device device) {
             if (mustFitExactly) {
                 if (!referencePart.bounds.Approximately(device.bounds.bounds)) {
                     return false;
@@ -31,8 +31,6 @@ namespace Runtime {
                 }
             }
 
-            device.transform.parent = transform;
-            device.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             return true;
         }
 

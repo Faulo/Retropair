@@ -35,7 +35,7 @@ namespace Runtime {
         }
 
         static readonly List<Device> list = new();
-        static readonly RaycastHit[] hits = new RaycastHit[8];
+        static readonly RaycastHit[] hits = new RaycastHit[32];
 
         void GetDevices(in Ray ray, ref Vector3 surfacePosition) {
             innerSelection = default;

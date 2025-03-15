@@ -12,16 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee2a3cd8bf8c8742bc5a97a7bb4c495, type: 3}
   m_Name: New Material Storage
   m_EditorClassIdentifier: 
-  defaultMaterial: {fileID: -876546973899608171, guid: a29cf5744a56a3d449c174226114817a, type: 3}
+  defaultMaterial: {fileID: 2100000, guid: 022f4fe413a609d479fbe099c82f6e99, type: 2}
   _storage:
     items:
     - key: Hull_Dark
       value: {fileID: 2100000, guid: 02b7f18f02cb8a44dbd137be5bbc07d9, type: 2}
     - key: Mainboard
       value: {fileID: 2100000, guid: 1f220f713f1e5c74190c610456c207be, type: 2}
-    - key: Button
-      value: {fileID: 2100000, guid: 9f84d163874dc2c4f8556e25717468fe, type: 2}
+    - key: Plastic_Light
+      value: {fileID: 2100000, guid: a56969d3eee0f6a4b8a5a623cb3de6c8, type: 2}
     - key: Lit
       value: {fileID: 2100000, guid: 0c4a164ff3d41e54aad46601ed67c679, type: 2}
+    - key: Button
+      value: {fileID: 2100000, guid: 9f84d163874dc2c4f8556e25717468fe, type: 2}
+    - key: Metal
+      value: {fileID: 2100000, guid: 42bd9a50296df594b8ad771c82521f58, type: 2}
     - key: Hull_Light
       value: {fileID: 2100000, guid: 0c4a164ff3d41e54aad46601ed67c679, type: 2}
+    - key: Chip
+      value: {fileID: 2100000, guid: c48565e8f4380ed4aa282d645e65e504, type: 2}
+    - key: Plastic_Dark
+      value: {fileID: 2100000, guid: 0816ff843d0ea6a4894ee8ddfb7519c0, type: 2}
+    - key: LED
+      value: {fileID: 2100000, guid: 9ed744300ce039048af7d40489cce03a, type: 2}

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Slothsoft.UnityExtensions;
-using UnityEditor;
 using UnityEngine;
 
 namespace Runtime {
@@ -10,10 +9,10 @@ namespace Runtime {
 #if UNITY_EDITOR
         internal static MaterialStorage instance => _instance
             ? _instance
-            : _instance = AssetDatabase
+            : _instance = UnityEditor.AssetDatabase
                 .FindAssets($"t:{nameof(MaterialStorage)}")
-                .Select(AssetDatabase.GUIDToAssetPath)
-                .Select(AssetDatabase.LoadAssetAtPath<MaterialStorage>)
+                .Select(UnityEditor.AssetDatabase.GUIDToAssetPath)
+                .Select(UnityEditor.AssetDatabase.LoadAssetAtPath<MaterialStorage>)
                 .FirstOrDefault();
 
         static MaterialStorage _instance;
@@ -32,6 +31,7 @@ namespace Runtime {
                 [name] = defaultMaterial
             };
             _storage.SetItems(newStorage);
+            UnityEditor.EditorUtility.SetDirty(this);
 
             return defaultMaterial;
         }

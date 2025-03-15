@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9a2a46b664d59cb49af70c0e499cca71
+guid: 51b28ea1968aa744ab60000f08ef855d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 1080
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,62 +93,115 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TestCharacter_Sad
+      name: SS_TestCharacter_0
       rect:
         serializedVersion: 2
-        x: 102
-        y: 2
-        width: 868
-        height: 1176
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 2160
+        width: 1080
+        height: 2160
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4365582eadcd3e548840013d359dc3bf
-      internalID: 148062021
+      spriteID: 230dc32171915c5419bc963a7284d5ae
+      internalID: 1820257263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TestCharacter_Happy
+      name: SS_TestCharacter_1
       rect:
         serializedVersion: 2
-        x: 1170
-        y: 2
-        width: 868
-        height: 1176
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1080
+        y: 2160
+        width: 1080
+        height: 2160
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86b5446dfa3967448b2fb34f826ad861
-      internalID: 347916303
+      spriteID: 94fc1b8e028a3854ebfb4048c4d99818
+      internalID: -657292625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_TestCharacter_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1080
+        height: 2160
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3272a687e66e53b42911737f1e75f3ae
+      internalID: 626515514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_TestCharacter_3
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 0
+        width: 1080
+        height: 2160
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dcd141531bb6464fbe3adb7dde9f385
+      internalID: 1845464114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SS_TestCharacter_4
+      rect:
+        serializedVersion: 2
+        x: 2160
+        y: 0
+        width: 1080
+        height: 2160
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c2e28b54d603874f8e3ecefa7d33686
+      internalID: 1098353664
       vertices: []
       indices: 
       edges: []
@@ -157,7 +210,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ed5b3c0c86970bb40ae521aa9d75e4cb
+    spriteID: 05671d1b5d70f324199a26d8912eb401
     internalID: 0
     vertices: []
     indices: 
@@ -167,8 +220,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      TestCharacter_Happy: 347916303
-      TestCharacter_Sad: 148062021
+      SS_TestCharacter_0: 1820257263
+      SS_TestCharacter_1: -657292625
+      SS_TestCharacter_2: 626515514
+      SS_TestCharacter_3: 1845464114
+      SS_TestCharacter_4: 1098353664
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

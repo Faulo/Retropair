@@ -13,6 +13,14 @@
         PowerSwitch,
         PowerSwitchMechanism,
         PowerSwitchMechanismSwitchAndCable,
+        PowerSwitchMechanismSwitch,
         ResetButton,
+        LEDGlass,
+        LEDDiode,
+        CartridgeFlap,
+        ChipCPU,
+        ChipRCP,
+        ChipRDRAM,
+        ControllerSockets,
     }
 }

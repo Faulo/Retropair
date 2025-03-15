@@ -3,6 +3,8 @@
 namespace Runtime {
     sealed class DevicePart : MonoBehaviour {
         [SerializeField]
+        internal string id;
+        [SerializeField]
         internal Bounds bounds;
         [SerializeField]
         internal Vector3 pivot;

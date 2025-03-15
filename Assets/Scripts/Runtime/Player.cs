@@ -34,9 +34,19 @@ namespace Runtime {
         }
 
         void ReleaseDevice() {
-            heldDevice.transform.parent = null;
-            heldDevice.isTangible = true;
-            heldDevice = default;
+            if (selector.selectedSlots.Count == 0) {
+                heldDevice.transform.parent = null;
+                heldDevice.isTangible = true;
+                heldDevice = default;
+            } else {
+                foreach (var slot in selector.selectedSlots) {
+                    if (slot.TryFit(heldDevice)) {
+                        heldDevice.isTangible = true;
+                        heldDevice = default;
+                        return;
+                    }
+                }
+            }
         }
 
         void GrabDevice(Device device) {

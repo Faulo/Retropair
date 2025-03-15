@@ -7,7 +7,7 @@ namespace Runtime {
         [SerializeField]
         DeviceRoot root;
         [SerializeField]
-        DevicePart bounds;
+        internal DevicePart bounds;
 
         void OnValidate() {
             if (!root) {

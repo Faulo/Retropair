@@ -20,14 +20,14 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
     }
 
     public void PlayMonolog(CharacterMonologProvider monologProvider) {
-        if (currentStory == monologProvider.story) {
+        if (currentStory == monologProvider.GetStory()) {
             return;
         }
-        currentStory = monologProvider.story;
+        currentStory = monologProvider.GetStory();
 
-        JumpToSection(CharacterMonologSection.Arrival);
-
-        StopCoroutine(currentMonologCoroutine);
+        if (currentMonologCoroutine != null) {
+            StopCoroutine(currentMonologCoroutine);
+        }
         currentMonologCoroutine = StartCoroutine(PlayLines());
     }
 
@@ -43,7 +43,6 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
 
             yield return new WaitForSeconds(lineDelaySeconds);
         }
-
         onMonologFinished?.Invoke();
     }
 }

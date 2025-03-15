@@ -5,9 +5,9 @@ using Ink.Runtime;
 public class CharacterMonologProvider : MonoBehaviour {
 
     public TextAsset inkJSON;
-    public Story story;
+    Story story = default;
 
-    private void Start() {
-        story = new Story(inkJSON.text);
+    public Story GetStory() {
+        return story ??= new Story(inkJSON.text);
     }
 }

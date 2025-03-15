@@ -12,10 +12,10 @@ public class CharacterVisitDirector : MonoBehaviour
 
     uint currentlyChosenCharacter = 0;
 
-    void Start()
-    {
+    void Start() {
         GameObject character = Instantiate(characterPrefabs[currentlyChosenCharacter], spawnOrigin.transform);
-        onCharacterMonologRequested?.Invoke(character.GetComponent<CharacterMonologProvider>());
+        var monologProvider = character.GetComponent<CharacterMonologProvider>();
+        onCharacterMonologRequested?.Invoke(monologProvider);
         onCharacterMonologSectionRequested?.Invoke(CharacterMonologSection.Arrival);
     }
 

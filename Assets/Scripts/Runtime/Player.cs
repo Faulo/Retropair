@@ -61,7 +61,7 @@ namespace Runtime {
             }
         }
 
-        void FixedUpdate() {
+        void LateUpdate() {
             UpdateHeldDevice();
         }
 

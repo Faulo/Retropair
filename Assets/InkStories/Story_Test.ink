@@ -1,19 +1,18 @@
--> arrival
-
-== arrival ==
+== Arrival ==
 Hello!
 -> END
 
-== main ==
+== Main ==
 Once upon a time...
 I said hello
 But then
 Ok
+-> END
 
-== failure ==
+== Failure ==
 You failed!
 -> END
 
-== success ==
+== Success ==
 You succeeded!
 -> END

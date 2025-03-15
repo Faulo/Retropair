@@ -24,7 +24,7 @@ namespace Editor {
                     part.tileSize = GridUtils.WorldToTileSize(bounds.size.SwizzleXZ());
 
                     var collider = renderer.gameObject.AddComponent<MeshCollider>();
-                    collider.convex = true;
+                    collider.convex = false;
                 }
             }
         }

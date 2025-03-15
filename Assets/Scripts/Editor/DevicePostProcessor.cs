@@ -18,6 +18,15 @@ namespace Editor {
                 } else {
                     var bounds = renderer.bounds;
 
+                    if (MaterialStorage.instance) {
+                        var materials = renderer.sharedMaterials;
+                        for (int i = 0; i < materials.Length; i++) {
+                            materials[i] = MaterialStorage.instance.GetOrCreate(materials[i].name);
+                        }
+
+                        renderer.sharedMaterials = materials;
+                    }
+
                     var part = renderer.gameObject.AddComponent<DevicePart>();
                     part.bounds = bounds;
                     part.pivot = bounds.center.WithY(bounds.min.y);

@@ -21,7 +21,7 @@ namespace Editor {
                     var part = renderer.gameObject.AddComponent<DevicePart>();
                     part.bounds = bounds;
                     part.pivot = bounds.center.WithY(bounds.min.y);
-                    part.tileSize = GridUtils.CeilToGrid(bounds.size.SwizzleXZ());
+                    part.tileSize = GridUtils.WorldToTileSize(bounds.size.SwizzleXZ());
                 }
             }
         }

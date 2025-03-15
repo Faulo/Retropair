@@ -1,4 +1,5 @@
 ﻿public enum CharacterMood {
-    Sad,
-    Happy
+    Initial,
+    Deny,
+    Success,
 }

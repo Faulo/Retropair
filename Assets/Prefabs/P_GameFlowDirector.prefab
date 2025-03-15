@@ -60,34 +60,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefabs:
   - {fileID: 7709689548724039816, guid: fe5876d5925daf74e9f72e1b03c31cb5, type: 3}
-  spawnOrigin: {fileID: 0}
+  - {fileID: 7709689548724039816, guid: 1caedb3ce263f0644899455bca4abc8c, type: 3}
+  visitorArrivalDelay: 5
+  monologPlayer: {fileID: 1076447923069427996}
+  characterSpawnOrigin: {fileID: 0}
   onCharacterMonologRequested:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1076447923069427996}
-        m_TargetAssemblyTypeName: CharacterMonologPlayer, Runtime
-        m_MethodName: PlayMonolog
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onCharacterMonologSectionRequested:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1076447923069427996}
-        m_TargetAssemblyTypeName: CharacterMonologPlayer, Runtime
-        m_MethodName: JumpToSection
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

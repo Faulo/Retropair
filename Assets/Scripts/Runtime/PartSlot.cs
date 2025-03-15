@@ -3,11 +3,15 @@ using UnityEngine;
 namespace Runtime {
     sealed class PartSlot : MonoBehaviour {
         [SerializeField]
-        Transform referencePart;
+        DevicePart referencePart;
 
         void OnValidate() {
-            if (referencePart is { gameObject: { activeSelf: true } }) {
-                transform.localPosition = transform.parent.position - referencePart.position;
+            if (!referencePart) {
+                return;
+            }
+
+            if (transform.localPosition != referencePart.pivot) {
+                transform.localPosition = referencePart.pivot;
             }
         }
     }

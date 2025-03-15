@@ -3,6 +3,8 @@
 namespace Runtime {
     sealed class Device : MonoBehaviour {
         [SerializeField]
+        internal bool isTangible = true;
+        [SerializeField]
         DeviceRoot root;
         [SerializeField]
         DevicePart bounds;

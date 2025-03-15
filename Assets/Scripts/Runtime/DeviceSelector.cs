@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,8 @@ namespace Runtime {
         internal Device innerSelection;
         [SerializeField]
         internal Device outerSelection;
+        [SerializeField]
+        internal Vector3 surfacePosition;
 
         void Update() {
             if (!mainCamera) {
@@ -24,27 +27,42 @@ namespace Runtime {
                 return;
             }
 
-            (innerSelection, outerSelection) = GetDevices(mainCamera.ScreenPointToRay(position));
+            var ray = mainCamera.ScreenPointToRay(position);
+
+            (innerSelection, outerSelection) = GetDevices(ray, ref surfacePosition);
         }
 
         static readonly List<Device> list = new();
         static readonly RaycastHit[] hits = new RaycastHit[8];
 
-        static (Device, Device) GetDevices(in Ray ray) {
+        static (Device, Device) GetDevices(in Ray ray, ref Vector3 surfacePosition) {
             (Device, Device) selection = default;
 
             int count = Physics.RaycastNonAlloc(ray, hits);
 
-            float distance = float.MaxValue;
+            float partDistance = float.MaxValue;
+            float surfaceDistance = float.MaxValue;
 
             for (int i = 0; i < count; i++) {
                 var hit = hits[i];
-                if (distance > hit.distance && hit.collider.TryGetComponent<DevicePart>(out var part)) {
+                if (hit.collider.TryGetComponent<DevicePart>(out var part)) {
                     part.GetComponentsInParent(false, list);
 
-                    if (list.Count > 0) {
-                        distance = hit.distance;
-                        selection = (list[0], list[^1]);
+                    if (list.Count > 0 && list.All(d => d.isTangible)) {
+                        if (partDistance > hit.distance) {
+                            partDistance = hit.distance;
+                            selection = (list[0], list[^1]);
+                        }
+
+                        if (surfaceDistance > hit.distance) {
+                            surfaceDistance = hit.distance;
+                            surfacePosition = hit.point;
+                        }
+                    }
+                } else {
+                    if (surfaceDistance > hit.distance) {
+                        surfaceDistance = hit.distance;
+                        surfacePosition = hit.point;
                     }
                 }
             }

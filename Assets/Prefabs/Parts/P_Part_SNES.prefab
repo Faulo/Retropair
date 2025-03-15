@@ -158,34 +158,6 @@ PrefabInstance:
       value: P_Part_SNES
       objectReference: {fileID: 0}
     - target: {fileID: 7557383283230458651, guid: fd5eb743d81e64d4cb4c548b1102c8a8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7557383283230458651, guid: fd5eb743d81e64d4cb4c548b1102c8a8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7557383283230458651, guid: fd5eb743d81e64d4cb4c548b1102c8a8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7557383283230458651, guid: fd5eb743d81e64d4cb4c548b1102c8a8, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7557383283230458651, guid: fd5eb743d81e64d4cb4c548b1102c8a8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7557383283230458651, guid: fd5eb743d81e64d4cb4c548b1102c8a8, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7557383283230458651, guid: fd5eb743d81e64d4cb4c548b1102c8a8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7557383283230458651, guid: fd5eb743d81e64d4cb4c548b1102c8a8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}

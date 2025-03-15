@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1619222666834335383}
   - component: {fileID: 1060871934578343330}
   - component: {fileID: 1117323170370336649}
+  - component: {fileID: 4915032006060302034}
   m_Layer: 0
   m_Name: P_EventSystem
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   innerSelection: {fileID: 0}
   outerSelection: {fileID: 0}
+  cursorPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1117323170370336649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,3 +80,17 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &4915032006060302034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478300303746377236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ee911ca87aeaf645b8298f22d65d9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selector: {fileID: 1060871934578343330}
+  heldDevice: {fileID: 0}

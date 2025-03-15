@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +11,10 @@ namespace Runtime {
         internal Device innerSelection;
         [SerializeField]
         internal Device outerSelection;
+        [SerializeField]
+        internal Vector3 surfacePosition;
+        [SerializeField]
+        internal List<PartSlot> selectedSlots = new();
 
         void Update() {
             if (!mainCamera) {
@@ -24,32 +29,59 @@ namespace Runtime {
                 return;
             }
 
-            (innerSelection, outerSelection) = GetDevices(mainCamera.ScreenPointToRay(position));
+            var ray = mainCamera.ScreenPointToRay(position);
+
+            GetDevices(ray, ref surfacePosition);
         }
 
         static readonly List<Device> list = new();
-        static readonly RaycastHit[] hits = new RaycastHit[8];
+        static readonly RaycastHit[] hits = new RaycastHit[32];
 
-        static (Device, Device) GetDevices(in Ray ray) {
-            (Device, Device) selection = default;
+        void GetDevices(in Ray ray, ref Vector3 surfacePosition) {
+            innerSelection = default;
+            outerSelection = default;
+
+            var slots = new SortedList<float, PartSlot>();
 
             int count = Physics.RaycastNonAlloc(ray, hits);
 
-            float distance = float.MaxValue;
+            float partDistance = float.MaxValue;
+            float surfaceDistance = float.MaxValue;
 
             for (int i = 0; i < count; i++) {
                 var hit = hits[i];
-                if (distance > hit.distance && hit.collider.TryGetComponent<DevicePart>(out var part)) {
-                    part.GetComponentsInParent(false, list);
+                hit.collider.GetComponentsInParent(false, list);
+                if (list.Any(d => !d.isTangible)) {
+                    continue;
+                }
 
+                if (hit.collider.TryGetComponent<DevicePart>(out var part)) {
                     if (list.Count > 0) {
-                        distance = hit.distance;
-                        selection = (list[0], list[^1]);
+                        if (partDistance > hit.distance) {
+                            partDistance = hit.distance;
+                            innerSelection = list[0];
+                            outerSelection = list[^1];
+                        }
+
+                        if (surfaceDistance > hit.distance) {
+                            surfaceDistance = hit.distance;
+                            surfacePosition = hit.point;
+                        }
+                    }
+                } else {
+                    if (hit.collider.TryGetComponent<PartSlot>(out var slot)) {
+                        slots.Add(hit.distance, slot);
+                    } else {
+                        if (surfaceDistance > hit.distance) {
+                            surfaceDistance = hit.distance;
+                            surfacePosition = hit.point;
+                        }
                     }
                 }
             }
 
-            return selection;
+            selectedSlots.Clear();
+            selectedSlots.AddRange(slots.Where(slot => slot.Key < surfaceDistance).Select(slot => slot.Value));
         }
     }
 }

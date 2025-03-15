@@ -4,7 +4,9 @@
     "references": [
         "Slothsoft.UnityExtensions",
         "MyBox",
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "Ink-Libraries",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

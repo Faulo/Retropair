@@ -2,6 +2,7 @@
   "resolutionStrategy": "highestMinor",
   "dependencies": {
     "com.alexeyperov.unity-dependencies-hunter": "https://github.com/AlexeyPerov/Unity-Dependencies-Hunter.git#upm",
+    "com.inkle.ink-unity-integration": "1.2.1",
     "com.domybest.mybox": "1.8.0",
     "com.oss.leantween": "2.50.4",
     "com.unity.2d.sprite": "1.0.0",
@@ -31,6 +32,8 @@
       "name": "OpenUPM",
       "url": "https://package.openupm.com",
       "scopes": [
+        "com.inkle.ink-unity-integration",
+        "nl.jeffreylanters.tweens",
         "com.domybest.mybox",
         "net.slothsoft.unity-extensions",
         "com.alelievr",

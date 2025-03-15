@@ -3,8 +3,12 @@ using UnityEngine;
 
 namespace Runtime {
     [ExecuteAlways]
-    sealed class SnapToGrid : MonoBehaviour {
+    sealed class EditorSnapToGrid : MonoBehaviour {
         void Update() {
+            if (Application.isPlaying) {
+                return;
+            }
+
             if (transform.parent) {
                 return;
             }
@@ -13,8 +17,14 @@ namespace Runtime {
                 return;
             }
 
+            var renderer = GetComponentInChildren<Renderer>();
+
+            if (!renderer) {
+                return;
+            }
+
             var position = transform.position;
-            GridUtils.SnapToGrid(ref position, GridUtils.WorldToTileSize(GetComponentInChildren<Renderer>().bounds.size.SwizzleXZ()));
+            GridUtils.SnapToGrid(ref position, GridUtils.WorldToTileSize(renderer.bounds.size.SwizzleXZ()));
             transform.position = position;
         }
     }

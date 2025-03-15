@@ -3,21 +3,23 @@
 namespace Runtime {
     sealed class Device : MonoBehaviour {
         [SerializeField]
-        DevicePart referenceBounds;
+        DeviceRoot root;
+        [SerializeField]
+        DevicePart bounds;
 
         void OnValidate() {
-            if (!referenceBounds) {
+            if (!root) {
                 return;
             }
 
-            if (!transform.parent) {
+            if (!bounds) {
                 return;
             }
 
-            var position = -referenceBounds.pivot;
+            var position = -bounds.pivot;
 
-            if (transform.localPosition != position) {
-                transform.localPosition = position;
+            if (root.transform.localPosition != position) {
+                root.transform.localPosition = position;
             }
         }
     }

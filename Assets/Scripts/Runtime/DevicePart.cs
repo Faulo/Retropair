@@ -4,7 +4,9 @@ using UnityEngine;
 namespace Runtime {
     sealed class DevicePart : MonoBehaviour {
         [SerializeField]
-        internal string id;
+        internal DeviceId deviceId;
+        [SerializeField]
+        internal PartId partId;
         [SerializeField]
         internal Bounds bounds;
         [SerializeField]

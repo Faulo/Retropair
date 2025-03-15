@@ -13,7 +13,12 @@ public sealed class CharacterMoodSpriteManager : MonoBehaviour
     CharacterMood currentMood = CharacterMood.Sad;
 
     public void Start() {
-        spriteRenderer.sprite = moodToSpriteMap[currentMood]; 
+        spriteRenderer.sprite = moodToSpriteMap[currentMood];
+        CharacterMonologPlayer.onMoodChanged += OnMoodChanged;
+    }
+
+    void OnDestroy() {
+        CharacterMonologPlayer.onMoodChanged -= OnMoodChanged;
     }
 
     public void OnMoodChanged(CharacterMood newMood) {

@@ -101,7 +101,6 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
 
     IEnumerator WaitForVisitorConsolePickedUp() {
         // TODO
-        // yield return null;
         yield break;
     }
 }

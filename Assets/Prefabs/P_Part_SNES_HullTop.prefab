@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5457648844783316417}
   - component: {fileID: 3112421544528130203}
   m_Layer: 0
-  m_Name: CartridgeSlot
+  m_Name: EjectButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 2311334536335049436}
   - component: {fileID: 7807588186071587736}
   m_Layer: 0
-  m_Name: MainboardShielding
+  m_Name: LED
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 1107820954627869603}
   - component: {fileID: 9168867572164320063}
   m_Layer: 0
-  m_Name: Chip
+  m_Name: ResetButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,6 +135,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 0}
+--- !u!1 &5367828327135651906
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7781512884967700159}
+  - component: {fileID: 2522714648348993153}
+  m_Layer: 0
+  m_Name: CartridgeSlotFlap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7781512884967700159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5367828327135651906}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.021806614, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8582356436350846710}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2522714648348993153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5367828327135651906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f43516f437dbb478612dcdc1039036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  referencePart: {fileID: 0}
 --- !u!1 &5498623141123751771
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +191,7 @@ GameObject:
   - component: {fileID: 1115718158222423079}
   - component: {fileID: 6805785745025804321}
   m_Layer: 0
-  m_Name: EjectMechanism
+  m_Name: PowerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 938317119599320872, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
       propertyPath: m_Name
-      value: P_Part_SNES_Mainboard
+      value: P_Part_SNES_HullTop
       objectReference: {fileID: 0}
     - target: {fileID: 1300949617133924729, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
       propertyPath: m_IsActive
@@ -204,15 +249,7 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1632507101768856053, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2480186114232476554, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3891916256346345520, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -222,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5807169987803418153, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5975111276500741132, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -267,18 +304,18 @@ PrefabInstance:
     - target: {fileID: 6330112784332115007, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
       propertyPath: bounds
       value: 
-      objectReference: {fileID: 2375381981723626717}
+      objectReference: {fileID: 852247003799484866}
     - target: {fileID: 6489488869199364855, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6540564070515407841, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.021806614
+      value: -0.000000018626451
       objectReference: {fileID: 0}
     - target: {fileID: 6540564070515407841, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0000000025399456
+      value: 0.0000000051017364
       objectReference: {fileID: 0}
     - target: {fileID: 6748385867595647590, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
       propertyPath: m_IsActive
@@ -307,11 +344,14 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6540564070515407841, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1107820954627869603}
+    - targetCorrespondingSourceObject: {fileID: 6540564070515407841, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7781512884967700159}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
---- !u!114 &2375381981723626717 stripped
+--- !u!114 &852247003799484866 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 948406539259621834, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2742038827808965845, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
   m_PrefabInstance: {fileID: 3305193436654222615}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

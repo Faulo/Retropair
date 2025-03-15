@@ -10,7 +10,7 @@ namespace Editor {
                 return;
             }
 
-            var device = gameObject.AddComponent<Device>();
+            var device = gameObject.AddComponent<DeviceRoot>();
 
             foreach (var renderer in gameObject.GetComponentsInChildren<MeshRenderer>()) {
                 if (renderer.name.EndsWith("_Modifier")) {
@@ -22,6 +22,9 @@ namespace Editor {
                     part.bounds = bounds;
                     part.pivot = bounds.center.WithY(bounds.min.y);
                     part.tileSize = GridUtils.WorldToTileSize(bounds.size.SwizzleXZ());
+
+                    var collider = renderer.gameObject.AddComponent<MeshCollider>();
+                    collider.convex = false;
                 }
             }
         }

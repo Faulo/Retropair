@@ -14,6 +14,16 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
 
     Coroutine currentMonologCoroutine = default;
 
+    bool lineAdvanceRequested = false;
+
+    void Start() {
+        Runtime.Player.onDialogueLineAdvanceIntent += HandleLineAdvanceIntent;
+    }
+
+    void OnDestroy() {
+        Runtime.Player.onDialogueLineAdvanceIntent -= HandleLineAdvanceIntent;
+    }
+
     public void SetMonolog(CharacterDefinition monologProvider) {
         if (currentStory == monologProvider.GetStory()) {
             return;
@@ -45,8 +55,13 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
             string currentLine = currentStory.Continue();
             onLineChanged?.Invoke(currentLine);
 
-            yield return new WaitForSeconds(lineDelaySeconds);
+            yield return new WaitUntil(() => lineAdvanceRequested);
+            lineAdvanceRequested = false;
         }
         onMonologFinished?.Invoke();
+    }
+
+    void HandleLineAdvanceIntent() {
+        lineAdvanceRequested = true;
     }
 }

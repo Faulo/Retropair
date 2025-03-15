@@ -249,8 +249,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 6.215, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.29, y: 0.909}
-  m_SizeDelta: {x: 2, y: 1}
+  m_AnchoredPosition: {x: 1.29, y: 1.198}
+  m_SizeDelta: {x: 2, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!20 &297706602 stripped
 Camera:
@@ -1185,7 +1185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3572084338664969396, guid: e8a291e594168f34788d308de5d0620e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3572084338664969396, guid: e8a291e594168f34788d308de5d0620e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1197,7 +1197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3572084338664969396, guid: e8a291e594168f34788d308de5d0620e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.017
       objectReference: {fileID: 0}
     - target: {fileID: 3572084338664969396, guid: e8a291e594168f34788d308de5d0620e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1221,7 +1221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3572084338664969396, guid: e8a291e594168f34788d308de5d0620e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.125
       objectReference: {fileID: 0}
     - target: {fileID: 3572084338664969396, guid: e8a291e594168f34788d308de5d0620e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

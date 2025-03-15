@@ -3,6 +3,7 @@
         Nothing,
         Blue,
         Black,
-        SNESGame
+        SNESGame,
+        N64Game
     }
 }

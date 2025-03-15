@@ -31,6 +31,8 @@ MonoBehaviour:
     m_Name: OpenUPM
     m_Url: https://package.openupm.com
     m_Scopes:
+    - com.inkle.ink-unity-integration
+    - nl.jeffreylanters.tweens
     - com.domybest.mybox
     - net.slothsoft.unity-extensions
     - com.alelievr

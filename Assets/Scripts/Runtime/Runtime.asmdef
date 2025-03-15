@@ -4,7 +4,8 @@
     "references": [
         "Slothsoft.UnityExtensions",
         "MyBox",
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "Ink-Libraries"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

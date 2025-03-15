@@ -1,0 +1,1 @@
+﻿{"inkVersion":21,"root":[[{"->":"arrival"},["done",{"#f":5,"#n":"g-0"}],null],"done",{"arrival":["^Hello!","\n","end",{"#f":1}],"main":["^Once upon a time...","\n","^I said hello","\n","^But then","\n","^Ok","\n",{"#f":1}],"failure":["^You failed!","\n","end",{"#f":1}],"success":["^You succeeded!","\n","end",{"#f":1}],"#f":1}],"listDefs":{}}

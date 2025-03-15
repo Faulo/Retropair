@@ -1,23 +1,49 @@
 using UnityEngine;
-using UnityEngine.Events;
+using Ink.Runtime;
+using System.Collections;
+using System;
 
 public sealed class CharacterMonologPlayer : MonoBehaviour
 {
-    public UnityEvent<CharacterMood> onMoodChanged;
+    public float lineDelaySeconds = 3.0f;
 
-    public UnityEvent<string> onLineChanged;
+    public static event Action<CharacterMood> onMoodChanged;
+    public static event Action<string> onLineChanged;
+    public static event Action onMonologFinished;
 
-    public UnityEvent onMonologFinished;
+    Story currentStory = default;
 
-    int currentInkStory = 0;
+    Coroutine currentMonologCoroutine = default;
 
     public void Start() {
         onMoodChanged?.Invoke(CharacterMood.Sad);
     }
 
-    public void PlayMonolog(int inkStory) {
-        if (currentInkStory == inkStory) {
+    public void PlayMonolog(CharacterMonologProvider monologProvider) {
+        if (currentStory == monologProvider.story) {
             return;
         }
+        currentStory = monologProvider.story;
+
+        JumpToSection(CharacterMonologSection.Arrival);
+
+        StopCoroutine(currentMonologCoroutine);
+        currentMonologCoroutine = StartCoroutine(PlayLines());
+    }
+
+    public void JumpToSection(CharacterMonologSection section) {
+        currentStory?.ChoosePathString(section.ToString());
+    }
+
+    IEnumerator PlayLines() {
+        while (currentStory.canContinue) {
+
+            string currentLine = currentStory.Continue();
+            onLineChanged?.Invoke(currentLine);
+
+            yield return new WaitForSeconds(lineDelaySeconds);
+        }
+
+        onMonologFinished?.Invoke();
     }
 }

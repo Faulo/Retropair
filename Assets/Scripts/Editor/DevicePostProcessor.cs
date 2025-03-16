@@ -6,6 +6,10 @@ using UnityEngine;
 namespace Editor {
     sealed class DevicePostProcessor : AssetPostprocessor {
         void OnPostprocessModel(GameObject gameObject) {
+            if (!assetPath.EndsWith(".fbx")) {
+                return;
+            }
+
             if (!gameObject.name.StartsWith("Device_")) {
                 return;
             }

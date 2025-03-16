@@ -65,7 +65,7 @@ namespace Runtime {
 
         void GrabDevice(Device device) {
             if (device) {
-                heldDevice = device;
+                heldDevice = device.Grab();
                 heldDevice.isTangible = false;
                 heldDevice.transform.parent = transform;
                 heldDevice.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);

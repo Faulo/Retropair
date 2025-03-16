@@ -25,9 +25,11 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
     uint currentVisitorIndex = 0;
     CharacterDefinition currentVisitorDefinition = default;
     GameObject currentVisitorObject = default;
-    GameObject currentVisitorConsoleObject = default;
 
-    bool wasDeviceGrabbed = false;
+    bool isHoldingDevice => currentVisitorDefinition is { consoleSpawnPoint: { hasAttachedDevice: true } };
+    Device currentHoldingDevice => isHoldingDevice
+        ? currentVisitorDefinition.consoleSpawnPoint.attachedDevice
+        : null;
 
     IEnumerator Start() {
         while (true) {
@@ -44,28 +46,35 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
 
             // spawn console and trigger main monolog
             SpawnVisitorConsole();
-            yield return WaitForVisitorConsolePickedUp();
+            yield return new WaitWhile(() => isHoldingDevice);
             monologPlayer.PlayMonologParallel(CharacterMonologSection.Main);
 
             // while device not successfully returned
-            while (!WasDeviceReturned() || !AreVisitorRequirementsMet()) {
+            while (true) {
+                yield return new WaitUntil(() => isHoldingDevice);
+                SetInteractionWithVisitorConsoleAllowed(false);
 
                 // fail monolog if device was returned, but requirements not met
-                if (WasDeviceReturned()) {
-                    onMoodChanged?.Invoke(CharacterMood.Deny);
-                    yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Failure);
+                if (AreVisitorRequirementsMet()) {
+                    break;
                 }
-                yield return null;
+
+                onMoodChanged?.Invoke(CharacterMood.Deny);
+                yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Failure);
+
+                SetInteractionWithVisitorConsoleAllowed(true);
+                yield return new WaitWhile(() => isHoldingDevice);
             }
 
             // device was returned successfully
-            SetInteractionWithVisitorConsoleAllowed(false);
             onMoodChanged?.Invoke(CharacterMood.Success);
             yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Success);
 
+            DespawnVisitorConsole();
+            yield return null;
+
             // success monolog done, cleanup scene
             DespawnVisitor();
-            DespawnVisitorConsole();
         }
     }
 
@@ -76,49 +85,36 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
     void SpawnVisitor() {
         currentVisitorObject = Instantiate(characterPrefabs[currentVisitorIndex], characterSpawnOrigin.transform);
         currentVisitorDefinition = currentVisitorObject.GetComponent<CharacterDefinition>();
+        currentVisitorDefinition.consoleSpawnPoint.gameObject.SetActive(false);
         onCharacterMonologRequested?.Invoke(currentVisitorDefinition);
     }
 
     void DespawnVisitor() {
-        if (currentVisitorObject != null) {
+        if (currentVisitorObject) {
             Destroy(currentVisitorObject);
+            currentVisitorObject = null;
+            currentVisitorDefinition = null;
         }
     }
 
     void SpawnVisitorConsole() {
-        currentVisitorConsoleObject = Instantiate(currentVisitorDefinition.consolePrefab, currentVisitorDefinition.consoleSpawnPoint.transform);
+        currentVisitorDefinition.consoleSpawnPoint.gameObject.SetActive(true);
     }
 
     void DespawnVisitorConsole() {
-        if (currentVisitorConsoleObject != null) {
-            Destroy(currentVisitorConsoleObject);
-        }
-    }
-
-    bool WasDeviceReturned() {
-        // TODO
-        return false;
+        currentVisitorDefinition.consoleSpawnPoint.gameObject.SetActive(false);
     }
 
     bool AreVisitorRequirementsMet() {
-        // TODO
-        return false;
+        return currentVisitorDefinition is { consoleSpawnPoint: { isComplete: true } };
     }
 
     void SetInteractionWithVisitorConsoleAllowed(bool newAllowed) {
-        currentVisitorConsoleObject.GetComponent<Device>().isTangible = newAllowed;
-    }
-
-    IEnumerator WaitForVisitorConsolePickedUp() {
-        Player.onDeviceGrabbed += HandleDevicePickedUp;
-        yield return new WaitUntil(() => wasDeviceGrabbed);
-        Player.onDeviceGrabbed -= HandleDevicePickedUp;
-        wasDeviceGrabbed = false;
-    }
-
-    void HandleDevicePickedUp(Device pickedUpDevice) {
-        if (pickedUpDevice == currentVisitorConsoleObject.GetComponent<Device>()) {
-            wasDeviceGrabbed = true;
+        if (!isHoldingDevice) {
+            Debug.LogWarning($"Can't set interaction, {this} is not holding a console!", this);
+            return;
         }
+
+        currentHoldingDevice.isTangible = newAllowed;
     }
 }

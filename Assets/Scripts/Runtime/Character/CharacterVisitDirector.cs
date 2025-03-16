@@ -27,8 +27,6 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
     GameObject currentVisitorObject = default;
     GameObject currentVisitorConsoleObject = default;
 
-    bool isDeviceReturned = false;
-
     bool wasDeviceGrabbed = false;
 
     IEnumerator Start() {
@@ -50,14 +48,13 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
             monologPlayer.PlayMonologParallel(CharacterMonologSection.Main);
 
             // while device not successfully returned
-            while (!isDeviceReturned || !AreVisitorRequirementsMet()) {
+            while (!WasDeviceReturned() || !AreVisitorRequirementsMet()) {
 
                 // fail monolog if device was returned, but requirements not met
-                if (isDeviceReturned) {
+                if (WasDeviceReturned()) {
                     onMoodChanged?.Invoke(CharacterMood.Deny);
                     yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Failure);
                 }
-
                 yield return null;
             }
 
@@ -69,7 +66,6 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
             // success monolog done, cleanup scene
             DespawnVisitor();
             DespawnVisitorConsole();
-            isDeviceReturned = false;
         }
     }
 
@@ -97,6 +93,11 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
         if (currentVisitorConsoleObject != null) {
             Destroy(currentVisitorConsoleObject);
         }
+    }
+
+    bool WasDeviceReturned() {
+        // TODO
+        return false;
     }
 
     bool AreVisitorRequirementsMet() {

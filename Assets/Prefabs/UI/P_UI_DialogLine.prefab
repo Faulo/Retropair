@@ -153,7 +153,8 @@ MonoBehaviour:
   buttonHintMesh: {fileID: 728782590068619215}
   buttonHintImage: {fileID: 8169702606885027252}
   background: {fileID: 430708762369994527}
-  buttonHintDelay: 2
+  buttonHintDelay: 0
+  typeSpeed: 0.05
 --- !u!1001 &814023315784790890
 PrefabInstance:
   m_ObjectHideFlags: 0

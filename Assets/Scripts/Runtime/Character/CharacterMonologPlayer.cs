@@ -8,6 +8,7 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
     public float lineDelaySeconds = 3.0f;
 
     public static event Action<string, bool> onLineChanged;
+    public static event Func<bool> onTryCompleteLine;
     public static event Action onMonologFinished;
 
     Story currentStory = default;
@@ -82,6 +83,8 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
     }
 
     void HandleLineAdvanceIntent() {
-        lineAdvanceRequested = true;
+        if (!onTryCompleteLine.Invoke()) {
+            lineAdvanceRequested = true;
+        }
     }
 }

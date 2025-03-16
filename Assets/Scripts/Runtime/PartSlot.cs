@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Runtime {
@@ -16,6 +17,8 @@ namespace Runtime {
             && attachedDevice.isWorking
             && attachedDevice.deviceId == referenceDeviceId
             && attachedDevice.partId == referencePartId;
+        internal bool isComplete => GetComponentsInChildren<PartSlot>()
+            .All(slot => slot.isWorkingAndCorrect);
 
         internal Action<Device> onAttachDevice;
         internal Action onFreeDevice;
@@ -46,7 +49,11 @@ namespace Runtime {
 
         bool isFree => transform.childCount == 0;
 
-        void Start() {
+        void OnEnable() {
+            UpdateCollider(true);
+        }
+
+        void OnDisable() {
             UpdateCollider(true);
         }
 
@@ -54,7 +61,8 @@ namespace Runtime {
             UpdateCollider();
         }
 
-        Device attachedDevice;
+        internal bool hasAttachedDevice => attachedDevice;
+        internal Device attachedDevice { get; private set; }
 
         BoxCollider _collider;
 
@@ -69,7 +77,8 @@ namespace Runtime {
                     _collider.size = referencePart.bounds.size;
                 }
 
-                if (transform.childCount > 0 && transform.GetChild(0).TryGetComponent(out attachedDevice)) {
+                if (transform.childCount > 0 && transform.GetChild(0).TryGetComponent<Device>(out var d)) {
+                    attachedDevice = d;
                     onAttachDevice?.Invoke(attachedDevice);
                 } else {
                     attachedDevice = null;

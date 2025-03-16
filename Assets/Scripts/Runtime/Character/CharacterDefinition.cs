@@ -3,6 +3,7 @@ using UnityEngine;
 using Ink.Runtime;
 using Slothsoft.UnityExtensions;
 using MyBox;
+using Runtime;
 
 public class CharacterDefinition : MonoBehaviour {
 
@@ -12,9 +13,8 @@ public class CharacterDefinition : MonoBehaviour {
     Story story = default;
 
     [Header("Console")]
-
-    public GameObject consolePrefab = default;
-    public GameObject consoleSpawnPoint = default;
+    [SerializeField]
+    internal PartSlot consoleSpawnPoint = default;
 
     [Header("Moods")]
 

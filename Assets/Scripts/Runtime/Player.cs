@@ -71,7 +71,7 @@ namespace Runtime {
                 heldDevice.transform.parent = transform;
                 heldDevice.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
                 UpdateHeldDevice();
-                onDeviceGrabbed.Invoke(device);
+                onDeviceGrabbed?.Invoke(device);
             }
         }
 

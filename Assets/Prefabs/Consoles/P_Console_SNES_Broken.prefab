@@ -333,6 +333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Part_SNES_Mainboard
       objectReference: {fileID: 0}
+    - target: {fileID: 8793124215117869352, guid: fa71070e1656dc14c97ba82dd48138c4, type: 3}
+      propertyPath: isWorking
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9166439218081943835, guid: fa71070e1656dc14c97ba82dd48138c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

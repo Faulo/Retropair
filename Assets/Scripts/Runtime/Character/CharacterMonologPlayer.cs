@@ -11,12 +11,15 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
     public static event Action onMonologFinished;
 
     Story currentStory = default;
+    Story currentHighPrioStory = default;
 
     Coroutine currentMonologCoroutine = default;
 
     bool lineAdvanceRequested = false;
 
     bool shouldHideHint = false;
+
+    bool isHighPrioMonologPlaying = false;
 
     void Start() {
         Runtime.Player.onDialogueLineAdvanceIntent += HandleLineAdvanceIntent;
@@ -26,39 +29,50 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
         Runtime.Player.onDialogueLineAdvanceIntent -= HandleLineAdvanceIntent;
     }
 
+    public void Clear() {
+        currentStory = currentHighPrioStory = null;
+        StopCoroutine(currentMonologCoroutine);
+        lineAdvanceRequested = false;
+        onLineChanged?.Invoke("", true);
+    }
+
     public void SetMonolog(CharacterDefinition monologProvider) {
         if (currentStory == monologProvider.GetStory()) {
             return;
         }
         currentStory = monologProvider.GetStory();
+        currentHighPrioStory = monologProvider.GetHighPrioStory();
     }
 
     public void SetHideHint(bool newShouldHideHint) {
         shouldHideHint = newShouldHideHint;
     }
 
-    public void PlayMonologParallel(CharacterMonologSection section) {
+    public void PlayMonologLowPrioParallel(CharacterMonologSection section) {
         currentStory?.ChoosePathString(section.ToString());
 
         if (currentMonologCoroutine != null) {
             StopCoroutine(currentMonologCoroutine);
         }
-        currentMonologCoroutine = StartCoroutine(PlayLines());
+        currentMonologCoroutine = StartCoroutine(PlayLines(false));
     }
 
-    public IEnumerator PlayMonologBlocking(CharacterMonologSection section) {
-        currentStory?.ChoosePathString(section.ToString());
-
-        if (currentMonologCoroutine != null) {
-            StopCoroutine(currentMonologCoroutine);
-        }
-        yield return PlayLines();
+    public IEnumerator PlayMonologHighPrioBlocking(CharacterMonologSection section) {
+        currentHighPrioStory?.ChoosePathString(section.ToString());
+        isHighPrioMonologPlaying = true;
+        yield return PlayLines(true);
+        isHighPrioMonologPlaying = false;
     }
 
-    IEnumerator PlayLines() {
-        while (currentStory.canContinue) {
+    IEnumerator PlayLines(bool isHighPrioMonolog) {
+        Story story = isHighPrioMonolog ? currentHighPrioStory : currentStory;
 
-            string currentLine = currentStory.Continue();
+        while (story.canContinue) {
+            if (!isHighPrioMonolog && isHighPrioMonologPlaying) {
+                yield return new WaitUntil(() => !isHighPrioMonologPlaying);
+            }
+
+            string currentLine = story.Continue();
             onLineChanged?.Invoke(currentLine, shouldHideHint);
 
             yield return new WaitUntil(() => lineAdvanceRequested);

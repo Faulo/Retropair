@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,8 @@ namespace Runtime {
 
         [SerializeField]
         internal Device heldDevice;
+        [SerializeField]
+        internal PartSlot selectedSlot;
 
         public static event Action onDialogueLineAdvanceIntent;
 
@@ -47,21 +50,17 @@ namespace Runtime {
         }
 
         void ReleaseDevice() {
-            if (selector.selectedSlots.Count == 0) {
-                heldDevice.transform.parent = null;
-                heldDevice.isTangible = true;
-                heldDevice = default;
+            UpdateSelectedSlot();
+
+            if (selectedSlot) {
+                heldDevice.transform.parent = selectedSlot.transform;
+                heldDevice.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             } else {
-                foreach (var slot in selector.selectedSlots) {
-                    if (slot.CanFit(heldDevice)) {
-                        heldDevice.transform.parent = slot.transform;
-                        heldDevice.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-                        heldDevice.isTangible = true;
-                        heldDevice = default;
-                        return;
-                    }
-                }
+                heldDevice.transform.parent = null;
             }
+
+            heldDevice.isTangible = true;
+            heldDevice = default;
         }
 
         void GrabDevice(Device device) {
@@ -76,7 +75,14 @@ namespace Runtime {
         }
 
         void LateUpdate() {
+            UpdateSelectedSlot();
             UpdateHeldDevice();
+        }
+
+        void UpdateSelectedSlot() {
+            selectedSlot = heldDevice
+                ? selector.selectedSlots.FirstOrDefault(s => s.CanFit(heldDevice))
+                : default;
         }
 
         void UpdateHeldDevice() {

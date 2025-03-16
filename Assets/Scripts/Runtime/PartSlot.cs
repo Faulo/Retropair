@@ -6,6 +6,8 @@ namespace Runtime {
     sealed class PartSlot : MonoBehaviour {
         [SerializeField]
         DevicePart referencePart;
+        [SerializeField]
+        internal string displayName = "Slot";
 
         internal DeviceId referenceDeviceId => referencePart.deviceId;
         internal PartId referencePartId => referencePart.partId;
@@ -85,6 +87,18 @@ namespace Runtime {
                     onFreeDevice?.Invoke();
                 }
             }
+        }
+
+        internal void ReportIncompletion() {
+            string report = name + "\n";
+            foreach (var slot in GetComponentsInChildren<PartSlot>()) {
+                report += isWorkingAndCorrect + " " + slot.name + " [ "
+                        + " working " + slot.attachedDevice.isWorking
+                        + " | deviceID match " + attachedDevice.deviceId + " " + (attachedDevice.deviceId == referenceDeviceId ? "==" : "!=") + " " + referenceDeviceId
+                        + " | partID match " + attachedDevice.partId + " " + (attachedDevice.partId == referencePartId ? "==" : "!=") + " " + referencePartId
+                        + " ]\n";
+            }
+            Debug.Log(report);
         }
     }
 }

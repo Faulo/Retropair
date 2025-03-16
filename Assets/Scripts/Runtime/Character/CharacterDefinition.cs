@@ -11,6 +11,7 @@ public class CharacterDefinition : MonoBehaviour {
 
     public TextAsset inkJSON;
     Story story = default;
+    Story highPrioStory = default;
 
     [Header("Console")]
     [SerializeField]
@@ -33,5 +34,13 @@ public class CharacterDefinition : MonoBehaviour {
 
     public Story GetStory() {
         return story ??= new Story(inkJSON.text);
+    }
+
+    public Story GetHighPrioStory() {
+        return highPrioStory ??= new Story(inkJSON.text);
+    }
+
+    public void ReportIncompletion() {
+        consoleSpawnPoint.ReportIncompletion();
     }
 }

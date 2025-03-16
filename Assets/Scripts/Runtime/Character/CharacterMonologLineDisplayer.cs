@@ -3,8 +3,7 @@ using MyBox;
 using UnityEngine;
 using UnityEngine.UI;
 
-public sealed class CharacterMonologLineDisplayer : MonoBehaviour
-{
+public sealed class CharacterMonologLineDisplayer : MonoBehaviour {
     [SerializeField]
     TMPro.TMP_Text textMesh = default;
 
@@ -12,7 +11,7 @@ public sealed class CharacterMonologLineDisplayer : MonoBehaviour
     TMPro.TMP_Text buttonHintMesh = default;
 
     [SerializeField]
-    RawImage buttonHintImage = default;
+    Image buttonHintImage = default;
 
     public float buttonHintDelay = 2.0f;
 
@@ -32,8 +31,7 @@ public sealed class CharacterMonologLineDisplayer : MonoBehaviour
 
         if (shouldHideHint || (isButtonHintShown && line.IsNullOrEmpty())) {
             SetButtonHintShown(false);
-        }
-        else if (!isButtonHintShown) {
+        } else if (!isButtonHintShown) {
             StartCoroutine(ShowButtonHintWithDelay());
         }
     }

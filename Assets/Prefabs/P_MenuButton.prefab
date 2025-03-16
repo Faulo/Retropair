@@ -209,6 +209,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3137515064149347140, guid: d5fc70dedb4c8ce42944e12e998f1587, type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137515064149347140, guid: d5fc70dedb4c8ce42944e12e998f1587, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: bbb4af2c5e1ca204a889e9de53d43dbf, type: 2}
+    - target: {fileID: 3137515064149347140, guid: d5fc70dedb4c8ce42944e12e998f1587, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1213566398354527001, guid: bbb4af2c5e1ca204a889e9de53d43dbf, type: 2}
+    - target: {fileID: 3137515064149347140, guid: d5fc70dedb4c8ce42944e12e998f1587, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3538513375439519134, guid: d5fc70dedb4c8ce42944e12e998f1587, type: 3}
       propertyPath: m_Name
       value: Text (TMP)

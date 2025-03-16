@@ -13,6 +13,9 @@ public sealed class CharacterMonologLineDisplayer : MonoBehaviour {
     [SerializeField]
     Image buttonHintImage = default;
 
+    [SerializeField]
+    Image background = default;
+
     public float buttonHintDelay = 2.0f;
 
     bool isButtonHintShown = true;
@@ -27,6 +30,7 @@ public sealed class CharacterMonologLineDisplayer : MonoBehaviour {
     }
 
     void DisplayLine(string line, bool shouldHideHint) {
+        background.SetAlpha(line.IsNullOrEmpty() ? 0f : 1f);
         textMesh.text = line;
 
         if (shouldHideHint || (isButtonHintShown && line.IsNullOrEmpty())) {

@@ -6,13 +6,17 @@ public class CameraSwitcher : MonoBehaviour
     [SerializeField]
     CinemachineCamera[] camerasDownToUp = default;
 
-    uint camIndex = 2;
+    [SerializeField]
+    uint camIndex = 1;
 
-    private void Start() {
+    protected void Start() {
+        for (int i = 0; i < camerasDownToUp.Length; i++) {
+            camerasDownToUp[i].Priority = i == camIndex ? 10 : 5;
+        }
         Runtime.Player.onCameraSwitchIntent += HandleCameraSwitchIntent;
     }
 
-    private void OnDestroy() {
+    protected void OnDestroy() {
         Runtime.Player.onCameraSwitchIntent -= HandleCameraSwitchIntent;
     }
 

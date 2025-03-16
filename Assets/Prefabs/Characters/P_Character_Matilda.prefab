@@ -156,6 +156,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Character_Matilda
       objectReference: {fileID: 0}
+    - target: {fileID: 9183598682172887847, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
+      propertyPath: partId
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9183598682172887847, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
+      propertyPath: deviceId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

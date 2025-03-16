@@ -58,6 +58,7 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
                 if (AreVisitorRequirementsMet()) {
                     break;
                 }
+                currentVisitorDefinition.ReportIncompletion();
 
                 // fail monolog if device was returned, but requirements not met
                 onMoodChanged?.Invoke(CharacterMood.Deny);

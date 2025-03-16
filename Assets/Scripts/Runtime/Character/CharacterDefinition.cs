@@ -39,4 +39,8 @@ public class CharacterDefinition : MonoBehaviour {
     public Story GetHighPrioStory() {
         return highPrioStory ??= new Story(inkJSON.text);
     }
+
+    public void ReportIncompletion() {
+        consoleSpawnPoint.ReportIncompletion();
+    }
 }

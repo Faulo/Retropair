@@ -590,6 +590,7 @@ GameObject:
   - component: {fileID: 1060871934578343330}
   - component: {fileID: 1117323170370336649}
   - component: {fileID: 4915032006060302034}
+  - component: {fileID: 3376129403071725775}
   m_Layer: 0
   m_Name: P_EventSystem
   m_TagString: Untagged
@@ -629,6 +630,7 @@ MonoBehaviour:
   innerSelection: {fileID: 0}
   outerSelection: {fileID: 0}
   surfacePosition: {x: 0, y: 0, z: 0}
+  hasSurface: 1
   selectedSlots: []
   maxReach: 5
 --- !u!114 &1117323170370336649
@@ -676,6 +678,24 @@ MonoBehaviour:
   selector: {fileID: 1060871934578343330}
   heldDevice: {fileID: 0}
   selectedSlot: {fileID: 0}
+--- !u!114 &3376129403071725775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478300303746377236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5479d0e03cef4f442a1dc5ce2fe62a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selector: {fileID: 1060871934578343330}
+  clickPrefab: {fileID: 8565009407455091949, guid: 6621da7f83d1de74a9f866a539b03c5f, type: 3}
+  dismantlePrefab: {fileID: 8565009407455091949, guid: eb6e52fe10a11fe46acbe9c37f158c30, type: 3}
+  grabPrefab: {fileID: 0}
+  fixPrefab: {fileID: 8565009407455091949, guid: 42eff8c40bc69de4395a56d6fb860b4b, type: 3}
+  releasePrefab: {fileID: 0}
 --- !u!1001 &1689256254209130369
 PrefabInstance:
   m_ObjectHideFlags: 0

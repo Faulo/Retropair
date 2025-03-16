@@ -14,6 +14,8 @@ namespace Runtime {
         [SerializeField]
         internal Vector3 surfacePosition;
         [SerializeField]
+        internal bool hasSurface = true;
+        [SerializeField]
         internal List<PartSlot> selectedSlots = new();
         [SerializeField]
         internal float maxReach = 5;

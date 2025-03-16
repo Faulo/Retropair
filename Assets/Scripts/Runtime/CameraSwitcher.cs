@@ -8,11 +8,11 @@ public class CameraSwitcher : MonoBehaviour
 
     uint camIndex = 2;
 
-    private void Start() {
+    protected void Start() {
         Runtime.Player.onCameraSwitchIntent += HandleCameraSwitchIntent;
     }
 
-    private void OnDestroy() {
+    protected void OnDestroy() {
         Runtime.Player.onCameraSwitchIntent -= HandleCameraSwitchIntent;
     }
 

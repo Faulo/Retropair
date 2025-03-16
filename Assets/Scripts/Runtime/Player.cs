@@ -14,9 +14,7 @@ namespace Runtime {
 
         public static event Action<float> onCameraSwitchIntent;
 
-        public void OnAdvanceDialogueLine(InputValue input) {
-            onDialogueLineAdvanceIntent.Invoke();
-        }
+        public void OnAdvanceDialogueLine(InputValue input) => onDialogueLineAdvanceIntent.Invoke();
 
         public void OnScrollWheel(InputValue input) {
             onCameraSwitchIntent.Invoke(input.Get<Vector2>().y);

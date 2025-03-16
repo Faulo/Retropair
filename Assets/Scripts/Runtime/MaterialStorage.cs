@@ -35,6 +35,32 @@ namespace Runtime {
 
             return defaultMaterial;
         }
+
+        [ContextMenu(nameof(AutoAssign))]
+        public void AutoAssign() {
+            var allMaterials = UnityEditor.AssetDatabase.FindAssets($"t:{nameof(Material)}")
+                .Select(UnityEditor.AssetDatabase.GUIDToAssetPath)
+                .Select(UnityEditor.AssetDatabase.LoadAssetAtPath<Material>)
+                .Where(m => m.name.StartsWith("MAT_"))
+                .ToList();
+
+            var newStorage = new Dictionary<string, Material>(_storage);
+            bool hasChanged = false;
+            foreach (string name in _storage.Keys) {
+                var material = allMaterials.FirstOrDefault(m => m.name == name);
+                if (material) {
+                    if (newStorage[name] != material) {
+                        newStorage[name] = material;
+                        hasChanged = true;
+                    }
+                }
+            }
+
+            if (hasChanged) {
+                _storage.SetItems(newStorage);
+                UnityEditor.EditorUtility.SetDirty(this);
+            }
+        }
 #endif
     }
 }

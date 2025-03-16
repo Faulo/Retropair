@@ -3,27 +3,7 @@ guid: 74e1b62d62d92004e84047e2981a59e6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cable
-    second: {fileID: 2100000, guid: 0816ff843d0ea6a4894ee8ddfb7519c0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Cable.001
-    second: {fileID: 2100000, guid: 0816ff843d0ea6a4894ee8ddfb7519c0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hull
-    second: {fileID: 2100000, guid: be71b1acac6a3b64c8b7b79dbde3869b, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Screen
-    second: {fileID: 2100000, guid: 6d6bdca716b852041ba70d172476b40f, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

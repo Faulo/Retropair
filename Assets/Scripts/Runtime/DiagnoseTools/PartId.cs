@@ -23,5 +23,6 @@
         ChipRCP,
         ChipRDRAM,
         ControllerSockets,
+        Cartridge,
     }
 }

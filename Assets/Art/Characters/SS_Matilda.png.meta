@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SS_TestCharacter_Deny
+      name: SS_Matilda_Deny
       rect:
         serializedVersion: 2
         x: 0
@@ -132,7 +132,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_TestCharacter_Idle
+      name: SS_Matilda_Idle
       rect:
         serializedVersion: 2
         x: 1080
@@ -154,10 +154,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_TestCharacter_Initial
+      name: SS_Matilda_Initial
       rect:
         serializedVersion: 2
-        x: 0
+        x: 7
         y: 0
         width: 1080
         height: 2160
@@ -176,7 +176,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_TestCharacter_Success
+      name: SS_Matilda_Success
       rect:
         serializedVersion: 2
         x: 1080
@@ -198,7 +198,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SS_TestCharacter_Blink
+      name: SS_Matilda_Blink
       rect:
         serializedVersion: 2
         x: 2160
@@ -233,11 +233,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SS_TestCharacter_Blink: 1098353664
-      SS_TestCharacter_Deny: 1820257263
-      SS_TestCharacter_Idle: -657292625
-      SS_TestCharacter_Initial: 626515514
-      SS_TestCharacter_Success: 1845464114
+      SS_Matilda_Blink: 1098353664
+      SS_Matilda_Deny: 1820257263
+      SS_Matilda_Idle: -657292625
+      SS_Matilda_Initial: 626515514
+      SS_Matilda_Success: 1845464114
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

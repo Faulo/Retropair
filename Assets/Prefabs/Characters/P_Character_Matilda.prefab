@@ -26,19 +26,19 @@ PrefabInstance:
       objectReference: {fileID: 347916303, guid: 9a2a46b664d59cb49af70c0e499cca71, type: 3}
     - target: {fileID: 2178326681127055222, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
       propertyPath: m_Size.x
-      value: 8.68
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2178326681127055222, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
       propertyPath: m_Size.y
-      value: 11.760281
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2178326681127055222, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 148062021, guid: 9a2a46b664d59cb49af70c0e499cca71, type: 3}
+      objectReference: {fileID: 626515514, guid: 51b28ea1968aa744ab60000f08ef855d, type: 3}
     - target: {fileID: 2178326681127055222, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2904237363045507980, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -82,16 +82,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6070151765035201637, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.411
+      value: 0.5670759
       objectReference: {fileID: 0}
     - target: {fileID: 6070151765035201637, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.353
+      value: -0.28
       objectReference: {fileID: 0}
     - target: {fileID: 8079891254811170481, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
       propertyPath: inkJSON
       value: 
-      objectReference: {fileID: 4900000, guid: d6bd87f02edec0f4a8ef8b4cd18b3fa5, type: 3}
+      objectReference: {fileID: 4900000, guid: 617109c37f8239d4cbd71294c7aeeb68, type: 3}
     - target: {fileID: 8079891254811170481, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
       propertyPath: blinkSprite
       value: 
@@ -154,7 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 1845464114, guid: 51b28ea1968aa744ab60000f08ef855d, type: 3}
     - target: {fileID: 8966204509778349797, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
       propertyPath: m_Name
-      value: P_Character_Test
+      value: P_Character_Matilda
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

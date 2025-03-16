@@ -26,6 +26,13 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
         Runtime.Player.onDialogueLineAdvanceIntent -= HandleLineAdvanceIntent;
     }
 
+    public void Clear() {
+        currentStory = null;
+        StopCoroutine(currentMonologCoroutine);
+        lineAdvanceRequested = false;
+        onLineChanged?.Invoke("", true);
+    }
+
     public void SetMonolog(CharacterDefinition monologProvider) {
         if (currentStory == monologProvider.GetStory()) {
             return;

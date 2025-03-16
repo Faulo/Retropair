@@ -49,16 +49,17 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
             yield return new WaitWhile(() => isHoldingDevice);
             monologPlayer.PlayMonologParallel(CharacterMonologSection.Main);
 
-            // while device not successfully returned
+            // visitor waits while device not successfully returned
             while (true) {
                 yield return new WaitUntil(() => isHoldingDevice);
                 SetInteractionWithVisitorConsoleAllowed(false);
 
-                // fail monolog if device was returned, but requirements not met
+                // if requirements met, break out of visitor wait loop
                 if (AreVisitorRequirementsMet()) {
                     break;
                 }
 
+                // fail monolog if device was returned, but requirements not met
                 onMoodChanged?.Invoke(CharacterMood.Deny);
                 yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Failure);
 
@@ -70,10 +71,9 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
             onMoodChanged?.Invoke(CharacterMood.Success);
             yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Success);
 
-            DespawnVisitorConsole();
-            yield return null;
-
             // success monolog done, cleanup scene
+            monologPlayer.Clear();
+            DespawnVisitorConsole();
             DespawnVisitor();
         }
     }

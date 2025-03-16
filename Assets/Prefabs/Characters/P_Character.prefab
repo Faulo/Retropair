@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6070151765035201637}
   - component: {fileID: 6575408681550897536}
   m_Layer: 0
-  m_Name: ConsoleSpawnPoint
+  m_Name: Slot_Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 9183598682172887847}
+  displayName: Slot
   mustFitExactly: 0
 --- !u!1 &6544941709644580079
 GameObject:

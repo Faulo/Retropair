@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7526023616924540135}
   - component: {fileID: 1687415777045246225}
   m_Layer: 0
-  m_Name: Slot_Device
+  m_Name: Slot_Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 2374024330101869560}
+  displayName: Slot
   mustFitExactly: 0
 --- !u!1 &7956513683084829915
 GameObject:
@@ -200,7 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d185ef94ab55d994ebe7579ea0e57878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
+  deviceId: 0
+  partId: 0
   bounds:
     m_Center: {x: 0.275, y: 0.15, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0.5}

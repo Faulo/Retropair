@@ -25,6 +25,7 @@ namespace Runtime {
         internal Action<Device> onAttachDevice;
         internal Action onFreeDevice;
 
+#if UNITY_EDITOR
         void OnValidate() {
             if (!referencePart) {
                 return;
@@ -33,7 +34,14 @@ namespace Runtime {
             if (transform.localPosition != referencePart.pivot) {
                 transform.localPosition = referencePart.pivot;
             }
+
+            string name = $"Slot_{referencePart.name}";
+            if (gameObject.name != name) {
+                gameObject.name = name;
+                UnityEditor.EditorUtility.SetDirty(gameObject);
+            }
         }
+#endif
 
         internal bool CanFit(Device device) {
             if (mustFitExactly) {
@@ -98,6 +106,7 @@ namespace Runtime {
                         + " | partID match " + attachedDevice.partId + " " + (attachedDevice.partId == referencePartId ? "==" : "!=") + " " + referencePartId
                         + " ]\n";
             }
+
             Debug.Log(report);
         }
     }

@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 283394086056669928}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04179204, y: -0.015920786, z: 0.0000000017786956}
+  m_LocalPosition: {x: -9.92713e-10, y: -0.01592079, z: -0.04179204}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 908380399220303439}
+  displayName: Slot
+  mustFitExactly: 1
 --- !u!1 &3306021944361337407
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +73,7 @@ Transform:
   m_GameObject: {fileID: 3306021944361337407}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.011864144, y: -0.020806612, z: 0.0000000018355499}
+  m_LocalPosition: {x: -0.0000000024170588, y: -0.020806614, z: 0.011864143}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -90,6 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 4895660050854314969}
+  displayName: Slot
+  mustFitExactly: 1
 --- !u!1 &4907248519166440943
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +120,7 @@ Transform:
   m_GameObject: {fileID: 4907248519166440943}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.05548286, y: -0.013920777, z: 0.058331087}
+  m_LocalPosition: {x: -0.058331095, y: -0.013920777, z: -0.055482857}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -135,6 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 4381318222939272686}
+  displayName: Slot
+  mustFitExactly: 1
 --- !u!1 &5498623141123751771
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 991603027682463634}
+  displayName: Slot
+  mustFitExactly: 1
 --- !u!1001 &3305193436654222615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256,6 +264,14 @@ PrefabInstance:
       propertyPath: bounds
       value: 
       objectReference: {fileID: 8178290371040335649}
+    - target: {fileID: 6330112784332115007, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
+      propertyPath: partId
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330112784332115007, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
+      propertyPath: displayName
+      value: Mainboard
+      objectReference: {fileID: 0}
     - target: {fileID: 6489488869199364855, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
       propertyPath: m_IsActive
       value: 0

@@ -1,3 +1,4 @@
+using System;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ namespace Runtime {
         SerializableKeyValuePairs<TVStatus, Color> colors = new();
         [SerializeField]
         Renderer attachedRenderer;
+        [SerializeField]
+        GameObject[] cables = Array.Empty<GameObject>();
 
         void OnEnable() {
             slot.onAttachDevice += UpdateStatus;
@@ -20,22 +23,37 @@ namespace Runtime {
             slot.onAttachDevice -= UpdateStatus;
             slot.onFreeDevice -= UpdateStatus;
         }
+        void Start() {
+            UpdateStatus(slot.attachedDevice);
+        }
 
         void UpdateStatus(Device device) {
             status = CalculateStatus(device);
             UpdateColor();
+            UpdateCables();
         }
 
         void UpdateStatus() {
             status = TVStatus.Nothing;
             UpdateColor();
+            UpdateCables();
         }
 
         void UpdateColor() {
             attachedRenderer.material.SetColor("_BaseColor", colors[status]);
         }
 
+        void UpdateCables() {
+            foreach (var cable in cables) {
+                cable.SetActive(status != TVStatus.Nothing);
+            }
+        }
+
         TVStatus CalculateStatus(Device attachedDevice) {
+            if (!attachedDevice) {
+                return TVStatus.Nothing;
+            }
+
             if (attachedDevice.TryGetPartById(DeviceId.SNES, PartId.Mainboard, out var snes)) {
                 bool hasMainboard = snes.isWorking;
                 bool hasCartridge = snes.TryGetSlotById(DeviceId.SNES, PartId.CartridgeSlot, out var cartridge) && cartridge.isWorkingAndCorrect;

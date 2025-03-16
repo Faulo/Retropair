@@ -54,6 +54,6 @@ MonoBehaviour:
     - key: Hull
       value: {fileID: 2100000, guid: 5c96578089fa315438dab3eb33fced3a, type: 2}
     - key: Chip
-      value: {fileID: 2100000, guid: 1f220f713f1e5c74190c610456c207be, type: 2}
+      value: {fileID: 2100000, guid: c48565e8f4380ed4aa282d645e65e504, type: 2}
     - key: MAT_CellShading_DarkWood
       value: {fileID: 2100000, guid: be71b1acac6a3b64c8b7b79dbde3869b, type: 2}

@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1221370544928556775}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00011886994, y: 0.014522775, z: 0.0023159813}
+  m_LocalPosition: {x: 0.00011886994, y: 0.023298763, z: 0.0023159813}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 2320689771118212042}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 0.40784314, g: 0.8862745, b: 0.42352942, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1 &1410953955977447905
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +75,7 @@ Transform:
   m_GameObject: {fileID: 1410953955977447905}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00011887517, y: 0.014522773, z: -0.032306496}
+  m_LocalPosition: {x: 0.00011887517, y: 0.02329876, z: -0.032306496}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -92,8 +94,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 1294482327434887756}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 0.40784314, g: 0.8862745, b: 0.42352942, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1 &4324913086546988999
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 4324913086546988999}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.041049544, y: 0.014522774, z: -0.0060086735}
+  m_LocalPosition: {x: -0.041049544, y: 0.023298763, z: -0.0060086735}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -139,8 +143,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 6176577863720718207}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 0.40784314, g: 0.8862745, b: 0.42352942, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1 &5494676542284008316
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +173,7 @@ Transform:
   m_GameObject: {fileID: 5494676542284008316}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.061684906, y: 0.014522774, z: -0.046003573}
+  m_LocalPosition: {x: -0.061684906, y: 0.023298763, z: -0.046003573}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -186,8 +192,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 193064178125347828}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 0.40784314, g: 0.8862745, b: 0.42352942, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1 &9085109804074153093
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 9085109804074153093}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0000000065031753, y: 0.014522789, z: 0.043068584}
+  m_LocalPosition: {x: -0.0000000047999604, y: 0.023298776, z: 0.031788703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -233,8 +241,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 663070462723881625}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 0.40784314, g: 0.8862745, b: 0.42352942, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1001 &8372241284985817993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -249,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 672098514509010373, guid: 4f26de77b9bbdeb49b931cd808a084f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.012522772
+      value: -0.02129876
       objectReference: {fileID: 0}
     - target: {fileID: 672098514509010373, guid: 4f26de77b9bbdeb49b931cd808a084f5, type: 3}
       propertyPath: m_LocalPosition.z

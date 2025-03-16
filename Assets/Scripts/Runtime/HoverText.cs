@@ -24,9 +24,9 @@ namespace Runtime {
                 }
             }
 
-            string infoText = GetInfoText();
-            string rightClickText = GetRightClickText();
-            string leftClickText = GetLeftClickText();
+            string infoText = Translate(GetInfoText());
+            string rightClickText = Translate(GetRightClickText());
+            string leftClickText = Translate(GetLeftClickText());
 
             infoBox.text = infoText;
             infoBox.transform.parent.gameObject.SetActive(!string.IsNullOrEmpty(infoText));
@@ -38,6 +38,10 @@ namespace Runtime {
             leftClickBox.transform.parent.gameObject.SetActive(!string.IsNullOrEmpty(leftClickText));
         }
 
+        string Translate(string text) {
+            return text;
+        }
+
         string GetInfoText() {
             return string.Empty;
         }
@@ -45,7 +49,7 @@ namespace Runtime {
         string GetLeftClickText() {
             if (player.heldDevice) {
                 return player.selectedSlot
-                    ? player.selectedSlot.displayName
+                    ? $"<color=#{ColorUtility.ToHtmlStringRGB(player.selectedSlot.color)}>{player.selectedSlot.displayName}</color>"
                     : string.Empty;
             }
 

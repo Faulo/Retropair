@@ -8,6 +8,8 @@ namespace Runtime {
         DevicePart referencePart;
         [SerializeField]
         internal string displayName = "Slot";
+        [SerializeField]
+        internal Color color = Color.white;
 
         internal DeviceId referenceDeviceId => referencePart.deviceId;
         internal PartId referencePartId => referencePart.partId;
@@ -33,6 +35,11 @@ namespace Runtime {
         void OnValidate() {
             if (!referencePart) {
                 return;
+            }
+
+            if (displayName == "Slot") {
+                displayName = "Attach";
+                UnityEditor.EditorUtility.SetDirty(this);
             }
 
             if (transform.localPosition != referencePart.pivot) {

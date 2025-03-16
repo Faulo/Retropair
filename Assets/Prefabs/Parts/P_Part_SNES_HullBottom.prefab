@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 6511035948984214078}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 0.40784314, g: 0.8862745, b: 0.42352942, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1 &3306021944361337407
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,8 +94,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 8178290371040335649}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 0.40784314, g: 0.8862745, b: 0.42352942, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1001 &3305193436654222615
 PrefabInstance:
   m_ObjectHideFlags: 0

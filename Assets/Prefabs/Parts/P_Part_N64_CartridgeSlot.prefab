@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 6356358714099010522}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 0.40857252, g: 0.8862745, b: 0.422875, a: 1}
   mustFitExactly: 1
   mustBeFilledForCustomer: 0
 --- !u!1001 &8372241284985817993

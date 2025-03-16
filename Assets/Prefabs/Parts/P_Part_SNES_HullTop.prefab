@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 6762394066901388458}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 0.40784314, g: 0.8862745, b: 0.42352942, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1 &3306021944361337407
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,8 +94,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 553747665791059222}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 0.40784314, g: 0.8862745, b: 0.42352942, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1 &4907248519166440943
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,8 +143,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 7959108861975217371}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 0.40784314, g: 0.8862745, b: 0.42352942, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1 &5367828327135651906
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,8 +192,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 5429480321668317549}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 0.40784314, g: 0.8862745, b: 0.42352942, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1 &5498623141123751771
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,8 +241,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 409975440981981756}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 0.40784314, g: 0.8862745, b: 0.42352942, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1001 &3305193436654222615
 PrefabInstance:
   m_ObjectHideFlags: 0

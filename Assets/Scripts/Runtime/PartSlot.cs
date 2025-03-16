@@ -88,5 +88,17 @@ namespace Runtime {
                 }
             }
         }
+
+        internal void ReportIncompletion() {
+            string report = name + "\n";
+            foreach (var slot in GetComponentsInChildren<PartSlot>()) {
+                report += isWorkingAndCorrect + " " + slot.name + " [ "
+                        + " working " + slot.attachedDevice.isWorking
+                        + " | deviceID match " + attachedDevice.deviceId + " " + (attachedDevice.deviceId == referenceDeviceId ? "==" : "!=") + " " + referenceDeviceId
+                        + " | partID match " + attachedDevice.partId + " " + (attachedDevice.partId == referencePartId ? "==" : "!=") + " " + referencePartId
+                        + " ]\n";
+            }
+            Debug.Log(report);
+        }
     }
 }

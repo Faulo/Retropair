@@ -1,6 +1,10 @@
-﻿public enum CharacterMonologSection {
-    Arrival,
-    Main,
-    Success,
-    Failure
+﻿
+namespace Runtime {
+
+    public enum CharacterMonologSection {
+        Arrival,
+        Main,
+        Success,
+        Failure
+    }
 }

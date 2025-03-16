@@ -1,46 +1,45 @@
-using UnityEngine;
-
 using Ink.Runtime;
 using Slothsoft.UnityExtensions;
-using MyBox;
-using Runtime;
+using UnityEngine;
 
-public class CharacterDefinition : MonoBehaviour {
+namespace Runtime {
+    public class CharacterDefinition : MonoBehaviour {
 
-    [Header("Story")]
+        [Header("Story")]
 
-    public TextAsset inkJSON;
-    Story story = default;
-    Story highPrioStory = default;
+        public TextAsset inkJSON;
+        Story story = default;
+        Story highPrioStory = default;
 
-    [Header("Console")]
-    [SerializeField]
-    internal PartSlot consoleSpawnPoint = default;
+        [Header("Console")]
+        [SerializeField]
+        internal PartSlot consoleSpawnPoint = default;
 
-    [Header("Moods")]
+        [Header("Moods")]
 
-    public SerializableKeyValuePairs<CharacterMood, Sprite> moodToSpriteMap = default;
+        public SerializableKeyValuePairs<CharacterMood, Sprite> moodToSpriteMap = default;
 
-    [Header("Minor Animations")]
+        [Header("Minor Animations")]
 
-    public Sprite blinkSprite = default;
-    public Sprite sideEyeSprite = default;
+        public Sprite blinkSprite = default;
+        public Sprite sideEyeSprite = default;
 
-    public float blinkProbabilityPerSecond = 0.3f;
-    public float sideEyeProbabilityPerSecond = 0.1f;
+        public float blinkProbabilityPerSecond = 0.3f;
+        public float sideEyeProbabilityPerSecond = 0.1f;
 
-    public Vector2 blinkTimeRangeInSeconds = new(0.08f, 0.12f);
-    public Vector2 sideEyeTimeRangeInSeconds = new(0.5f, 1.3f);
+        public Vector2 blinkTimeRangeInSeconds = new(0.08f, 0.12f);
+        public Vector2 sideEyeTimeRangeInSeconds = new(0.5f, 1.3f);
 
-    public Story GetStory() {
-        return story ??= new Story(inkJSON.text);
-    }
+        public Story GetStory() {
+            return story ??= new Story(inkJSON.text);
+        }
 
-    public Story GetHighPrioStory() {
-        return highPrioStory ??= new Story(inkJSON.text);
-    }
+        public Story GetHighPrioStory() {
+            return highPrioStory ??= new Story(inkJSON.text);
+        }
 
-    public void ReportIncompletion() {
-        consoleSpawnPoint.ReportIncompletion();
+        public void ReportIncompletion() {
+            consoleSpawnPoint.ReportIncompletion();
+        }
     }
 }

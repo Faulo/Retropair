@@ -1,5 +1,9 @@
-﻿public enum CharacterMood {
-    Initial,
-    Deny,
-    Success,
+﻿
+namespace Runtime {
+
+    public enum CharacterMood {
+        Initial,
+        Deny,
+        Success,
+    }
 }

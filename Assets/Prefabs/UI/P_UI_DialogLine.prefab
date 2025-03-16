@@ -226,6 +226,7 @@ MonoBehaviour:
   textMesh: {fileID: 3201205356129726274}
   buttonHintMesh: {fileID: 5504711454637503110}
   buttonHintImage: {fileID: 7297505256867454571}
+  buttonHintDelay: 2
 --- !u!1 &9210466120773525384
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,3 @@
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -45,11 +44,9 @@ namespace Runtime {
 
         string GetLeftClickText() {
             if (player.heldDevice) {
-                return selector
-                    .selectedSlots
-                    .Where(s => s.CanFit(player.heldDevice))
-                    .Select(s => s.displayName)
-                    .FirstOrDefault();
+                return player.selectedSlot
+                    ? player.selectedSlot.displayName
+                    : string.Empty;
             }
 
             return selector.outerSelection

@@ -184,7 +184,7 @@ PrefabInstance:
       objectReference: {fileID: -79930737, guid: 33b01c24813bcc34f8df62f4f947540e, type: 3}
     - target: {fileID: 8079891254811170481, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
       propertyPath: blinkProbabilityPerSecond
-      value: 0.35
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 8079891254811170481, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
       propertyPath: sideEyeProbabilityPerMinute

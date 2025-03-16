@@ -13,6 +13,14 @@ namespace Runtime {
         [SerializeField]
         internal PartSlot selectedSlot;
 
+        [SerializeField]
+        AudioClip sfxGrab = default;
+        [SerializeField]
+        AudioClip sfxRelease = default;
+
+        [SerializeField]
+        AudioSource sfxSource = default;
+
         public static event Action onDialogueLineAdvanceIntent;
 
         public static event Action<float> onCameraSwitchIntent;
@@ -61,6 +69,9 @@ namespace Runtime {
 
             heldDevice.isTangible = true;
             heldDevice = default;
+
+            sfxSource.resource = sfxRelease;
+            sfxSource.Play();
         }
 
         void GrabDevice(Device device) {
@@ -71,6 +82,9 @@ namespace Runtime {
                 heldDevice.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
                 UpdateHeldDevice();
                 onDeviceGrabbed?.Invoke(device);
+
+                sfxSource.resource = sfxGrab;
+                sfxSource.Play();
             }
         }
 

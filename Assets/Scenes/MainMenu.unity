@@ -1226,11 +1226,12 @@ PrefabInstance:
         Fonts: Honey Salt by MJType - GSM Font by Grant Morrison (CC0)
 
         -
-        Audio:'
+        Audio: Soothing Acoustic Guitar for Relaxation by LolaMoore - License: Attribution
+        4.0'
       objectReference: {fileID: 0}
     - target: {fileID: 3453891571125454258, guid: 40dbd43209bd3c647b183d0504a7d276, type: 3}
       propertyPath: m_fontSize
-      value: 44.95
+      value: 43.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

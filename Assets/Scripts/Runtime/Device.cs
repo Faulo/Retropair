@@ -14,6 +14,8 @@ namespace Runtime {
         internal DeviceId deviceId;
         [SerializeField]
         internal PartId partId;
+        [SerializeField]
+        internal string displayName;
 
         void OnValidate() {
             if (!root) {
@@ -26,6 +28,7 @@ namespace Runtime {
 
             deviceId = bounds.deviceId;
             partId = bounds.partId;
+            displayName = bounds.partId.ToString();
 
             var position = -bounds.pivot;
 

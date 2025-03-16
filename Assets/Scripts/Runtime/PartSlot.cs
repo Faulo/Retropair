@@ -6,6 +6,8 @@ namespace Runtime {
     sealed class PartSlot : MonoBehaviour {
         [SerializeField]
         DevicePart referencePart;
+        [SerializeField]
+        internal string displayName = "Slot";
 
         internal DeviceId referenceDeviceId => referencePart.deviceId;
         internal PartId referencePartId => referencePart.partId;

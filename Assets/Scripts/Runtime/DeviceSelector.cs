@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 namespace Runtime {
     sealed class DeviceSelector : MonoBehaviour {
         [SerializeField]
-        Camera mainCamera;
+        internal Camera mainCamera;
         [SerializeField]
         internal Device innerSelection;
         [SerializeField]

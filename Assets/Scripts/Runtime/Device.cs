@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Runtime {
     sealed class Device : MonoBehaviour {
@@ -67,5 +68,11 @@ namespace Runtime {
             slot = default;
             return false;
         }
+
+        internal Func<Device> spawn;
+
+        internal Device Grab() => spawn is null
+            ? this
+            : spawn();
     }
 }

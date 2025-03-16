@@ -292,4 +292,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slot: {fileID: 4928416172645978473}
   acceleration: 1
-  destroyThreshold: -1
+  destroyThreshold: -0.5

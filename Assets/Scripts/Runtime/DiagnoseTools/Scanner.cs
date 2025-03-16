@@ -8,17 +8,22 @@ namespace Runtime {
         [SerializeField]
         ScanStatus status;
         [SerializeField]
-        SerializableKeyValuePairs<ScanStatus, Color> colors = new();
+        SerializableKeyValuePairs<ScanStatus, Sprite> colors = new();
         [SerializeField]
-        Renderer attachedRenderer;
+        SpriteRenderer attachedRenderer;
 
         void OnEnable() {
             slot.onAttachDevice += UpdateStatus;
             slot.onFreeDevice += UpdateStatus;
         }
+
         void OnDisable() {
             slot.onAttachDevice -= UpdateStatus;
             slot.onFreeDevice -= UpdateStatus;
+        }
+
+        void Start() {
+            UpdateStatus(slot.attachedDevice);
         }
 
         void UpdateStatus(Device device) {
@@ -32,10 +37,14 @@ namespace Runtime {
         }
 
         void UpdateColor() {
-            attachedRenderer.material.SetColor("_BaseColor", colors[status]);
+            attachedRenderer.sprite = colors[status];
         }
 
         ScanStatus CalculateStatus(Device attachedDevice) {
+            if (!attachedDevice) {
+                return ScanStatus.Nothing;
+            }
+
             return attachedDevice.isWorking
                 ? ScanStatus.IsWorking
                 : ScanStatus.IsBroken;

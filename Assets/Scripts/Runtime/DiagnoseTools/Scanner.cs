@@ -12,6 +12,14 @@ namespace Runtime {
         [SerializeField]
         SpriteRenderer attachedRenderer;
 
+        [SerializeField]
+        AudioClip sfxSuccess = default;
+        [SerializeField]
+        AudioClip sfxFail = default;
+
+        [SerializeField]
+        AudioSource sfxSource = default;
+
         void OnEnable() {
             slot.onAttachDevice += UpdateStatus;
             slot.onFreeDevice += UpdateStatus;
@@ -27,8 +35,19 @@ namespace Runtime {
         }
 
         void UpdateStatus(Device device) {
+            ScanStatus previousStatus = status;
             status = CalculateStatus(device);
+
             UpdateColor();
+
+            if (status == ScanStatus.IsWorking && status != previousStatus) {
+                sfxSource.resource = sfxSuccess;
+                sfxSource.Play();
+            }
+            if (status == ScanStatus.IsBroken && status != previousStatus) {
+                sfxSource.resource = sfxFail;
+                sfxSource.Play();
+            }
         }
 
         void UpdateStatus() {

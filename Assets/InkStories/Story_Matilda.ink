@@ -36,19 +36,19 @@ And my brother also.
 Sometimes, I sneak out of my bed and play on the DS in secret!
 But nobody knows, so don't tell anything mister!
 ..
-..
+...
 Do you know if Tobi who is my dog can learn to play games with me?
 Most of my friends play games on the new consoles.
 ..
-..
-..
+...
+....
 Why do you need a printer? Is it to print new consoles?
 ..
-..
+...
 An old man went past me with a console under his arm. He was very happy.
 Probably he was in this shop.
 ..
-..
+...
 Is it taking a long time?
 -> END
 

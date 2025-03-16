@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Runtime;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -28,6 +29,8 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
 
     bool isDeviceReturned = false;
 
+    bool wasDeviceGrabbed = false;
+
     IEnumerator Start() {
         while (true) {
             yield return new WaitForSeconds(visitorArrivalDelay);
@@ -43,8 +46,8 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
 
             // spawn console and trigger main monolog
             SpawnVisitorConsole();
-            monologPlayer.PlayMonologParallel(CharacterMonologSection.Main);
             yield return WaitForVisitorConsolePickedUp();
+            monologPlayer.PlayMonologParallel(CharacterMonologSection.Main);
 
             // while device not successfully returned
             while (!isDeviceReturned || !AreVisitorRequirementsMet()) {
@@ -59,7 +62,7 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
             }
 
             // device was returned successfully
-            DisallowInteractionWithVisitorConsole();
+            SetInteractionWithVisitorConsoleAllowed(false);
             onMoodChanged?.Invoke(CharacterMood.Success);
             yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Success);
 
@@ -101,12 +104,20 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
         return false;
     }
 
-    void DisallowInteractionWithVisitorConsole() {
-        // TODO
+    void SetInteractionWithVisitorConsoleAllowed(bool newAllowed) {
+        currentVisitorConsoleObject.GetComponent<Device>().isTangible = newAllowed;
     }
 
     IEnumerator WaitForVisitorConsolePickedUp() {
-        // TODO
-        yield break;
+        Player.onDeviceGrabbed += HandleDevicePickedUp;
+        yield return new WaitUntil(() => wasDeviceGrabbed);
+        Player.onDeviceGrabbed -= HandleDevicePickedUp;
+        wasDeviceGrabbed = false;
+    }
+
+    void HandleDevicePickedUp(Device pickedUpDevice) {
+        if (pickedUpDevice == currentVisitorConsoleObject.GetComponent<Device>()) {
+            wasDeviceGrabbed = true;
+        }
     }
 }

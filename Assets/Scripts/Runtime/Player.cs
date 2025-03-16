@@ -14,6 +14,8 @@ namespace Runtime {
 
         public static event Action<float> onCameraSwitchIntent;
 
+        public static event Action<Device> onDeviceGrabbed;
+
         public void OnAdvanceDialogueLine(InputValue input) => onDialogueLineAdvanceIntent.Invoke();
 
         public void OnScrollWheel(InputValue input) {
@@ -69,6 +71,7 @@ namespace Runtime {
                 heldDevice.transform.parent = transform;
                 heldDevice.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
                 UpdateHeldDevice();
+                onDeviceGrabbed.Invoke(device);
             }
         }
 

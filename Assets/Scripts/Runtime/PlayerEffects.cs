@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace Runtime {
-    sealed class PlayerVFX : MonoBehaviour {
+    sealed class PlayerEffects : MonoBehaviour {
 
         [SerializeField]
         DeviceSelector selector;

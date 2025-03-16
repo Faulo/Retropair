@@ -14,6 +14,8 @@ namespace Runtime {
 
         [SerializeField]
         bool mustFitExactly = true;
+        [SerializeField]
+        bool mustBeFilledForCustomer = true;
 
         internal bool isWorkingAndCorrect => attachedDevice
             && attachedDevice.isWorking
@@ -21,6 +23,8 @@ namespace Runtime {
             && attachedDevice.partId == referencePartId;
         internal bool isComplete => GetComponentsInChildren<PartSlot>()
             .All(slot => slot.isWorkingAndCorrect);
+        internal bool isCustomerComplete => GetComponentsInChildren<PartSlot>()
+            .All(slot => !slot.mustBeFilledForCustomer || slot.isWorkingAndCorrect);
 
         internal Action<Device> onAttachDevice;
         internal Action onFreeDevice;

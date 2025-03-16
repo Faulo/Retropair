@@ -108,7 +108,7 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
     }
 
     bool AreVisitorRequirementsMet() {
-        return currentVisitorDefinition is { consoleSpawnPoint: { isComplete: true } };
+        return currentVisitorDefinition is { consoleSpawnPoint: { isCustomerComplete: true } };
     }
 
     void SetInteractionWithVisitorConsoleAllowed(bool newAllowed) {

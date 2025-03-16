@@ -15,26 +15,16 @@ namespace Runtime {
         [SerializeField]
         GameObject[] cables = Array.Empty<GameObject>();
 
-        void OnEnable() {
-            slot.onAttachDevice += UpdateStatus;
-            slot.onFreeDevice += UpdateStatus;
-        }
-        void OnDisable() {
-            slot.onAttachDevice -= UpdateStatus;
-            slot.onFreeDevice -= UpdateStatus;
-        }
         void Start() {
+            UpdateStatus(slot.attachedDevice);
+        }
+
+        void FixedUpdate() {
             UpdateStatus(slot.attachedDevice);
         }
 
         void UpdateStatus(Device device) {
             status = CalculateStatus(device);
-            UpdateColor();
-            UpdateCables();
-        }
-
-        void UpdateStatus() {
-            status = TVStatus.Nothing;
             UpdateColor();
             UpdateCables();
         }
@@ -55,28 +45,29 @@ namespace Runtime {
             }
 
             if (attachedDevice.TryGetPartById(DeviceId.SNES, PartId.Mainboard, out var snes)) {
-                bool hasMainboard = snes.isWorking;
-                bool hasCartridge = snes.TryGetSlotById(DeviceId.SNES, PartId.CartridgeSlot, out var cartridge) && cartridge.isWorkingAndCorrect;
-                bool hasPower = snes.TryGetSlotById(DeviceId.SNES, PartId.PowerSwitchMechanism, out var power) && power.isWorkingAndCorrect;
+                bool hasPower = snes.isWorking
+                    && snes.TryGetSlotById(DeviceId.SNES, PartId.PowerSwitchMechanism, out var power) && power.isComplete;
+                bool hasCartridge = snes.TryGetSlotById(DeviceId.SNES, PartId.CartridgeSlot, out var cartridge) && cartridge.isComplete;
 
-                return (hasMainboard, hasPower, hasCartridge) switch {
-                    (false, _, _) => TVStatus.Blue,
-                    (true, false, _) => TVStatus.Blue,
-                    (true, true, false) => TVStatus.Black,
-                    (true, true, true) => TVStatus.SNESGame,
+                return (hasPower, hasCartridge) switch {
+                    (false, _) => TVStatus.Blue,
+                    (true, false) => TVStatus.Black,
+                    (true, true) => TVStatus.SNESGame,
                 };
             }
 
             if (attachedDevice.TryGetPartById(DeviceId.N64, PartId.Mainboard, out var n64)) {
-                bool hasMainboard = n64.isWorking;
-                bool hasCartridge = n64.TryGetSlotById(DeviceId.N64, PartId.CartridgeSlot, out var cartridge) && cartridge.isWorkingAndCorrect;
-                bool hasPower = n64.TryGetSlotById(DeviceId.N64, PartId.PowerSwitchMechanism, out var power) && power.isWorkingAndCorrect;
+                bool hasPower = n64.isWorking
+                    && n64.TryGetSlotById(DeviceId.N64, PartId.PowerSwitchMechanism, out var power) && power.isComplete
+                    && n64.TryGetSlotById(DeviceId.N64, PartId.ChipCPU, out var cpu) && cpu.isComplete
+                    && n64.TryGetSlotById(DeviceId.N64, PartId.ChipRCP, out var rcp) && rcp.isComplete
+                    && n64.TryGetSlotById(DeviceId.N64, PartId.ChipRDRAM, out var ram) && ram.isComplete;
+                bool hasCartridge = n64.TryGetSlotById(DeviceId.N64, PartId.CartridgeSlot, out var cartridge) && cartridge.isComplete;
 
-                return (hasMainboard, hasPower, hasCartridge) switch {
-                    (false, _, _) => TVStatus.Blue,
-                    (true, false, _) => TVStatus.Blue,
-                    (true, true, false) => TVStatus.Black,
-                    (true, true, true) => TVStatus.N64Game,
+                return (hasPower, hasCartridge) switch {
+                    (false, _) => TVStatus.Blue,
+                    (true, false) => TVStatus.Black,
+                    (true, true) => TVStatus.N64Game,
                 };
             }
 

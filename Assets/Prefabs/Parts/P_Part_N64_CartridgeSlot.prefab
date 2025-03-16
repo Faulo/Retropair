@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 165931145291462556}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0566502, z: 0.030840073}
+  m_LocalPosition: {x: 0, y: 0.02368518, z: 0.030840073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,6 +47,7 @@ MonoBehaviour:
   referencePart: {fileID: 6356358714099010522}
   displayName: Slot
   mustFitExactly: 1
+  mustBeFilledForCustomer: 0
 --- !u!1001 &8372241284985817993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57,15 +58,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 672098514509010373, guid: 4f26de77b9bbdeb49b931cd808a084f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0000000065031753
+      value: 0.0000000047999604
       objectReference: {fileID: 0}
     - target: {fileID: 672098514509010373, guid: 4f26de77b9bbdeb49b931cd808a084f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.014522789
+      value: -0.023298776
       objectReference: {fileID: 0}
     - target: {fileID: 672098514509010373, guid: 4f26de77b9bbdeb49b931cd808a084f5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.043068584
+      value: -0.031788703
       objectReference: {fileID: 0}
     - target: {fileID: 938317119599320872, guid: 4f26de77b9bbdeb49b931cd808a084f5, type: 3}
       propertyPath: m_Name

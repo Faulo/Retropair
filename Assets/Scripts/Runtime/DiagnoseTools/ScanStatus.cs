@@ -3,5 +3,6 @@
         Nothing,
         IsWorking,
         IsBroken,
+        IsUnknown,
     }
 }

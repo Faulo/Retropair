@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 283394086056669928}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.92713e-10, y: -0.01592079, z: -0.04179204}
+  m_LocalPosition: {x: -0.0000000014940071, y: -0.02152767, z: -0.04179204}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,8 +45,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 908380399220303439}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 1, g: 1, b: 1, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
+--- !u!1 &3227091697800636113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4269104881367187715}
+  - component: {fileID: 3571972501840230557}
+  m_Layer: 0
+  m_Name: Slot_Heatsink
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4269104881367187715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3227091697800636113}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0012800512, y: -0.020806614, z: 0.06046026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2779483092927225098}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3571972501840230557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3227091697800636113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58f43516f437dbb478612dcdc1039036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  referencePart: {fileID: 5051655553913422885}
+  displayName: Attach
+  color: {r: 1, g: 1, b: 1, a: 1}
+  mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1 &3306021944361337407
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 3306021944361337407}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0000000024170588, y: -0.020806614, z: 0.011864143}
+  m_LocalPosition: {x: -0.0000000020922293, y: -0.017173456, z: 0.011864143}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -92,8 +143,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 4895660050854314969}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 1, g: 1, b: 1, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1 &4907248519166440943
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +173,7 @@ Transform:
   m_GameObject: {fileID: 4907248519166440943}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.058331095, y: -0.013920777, z: -0.055482857}
+  m_LocalPosition: {x: -0.058331095, y: -0.019527657, z: -0.055482857}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -139,8 +192,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 4381318222939272686}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 1, g: 1, b: 1, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1 &5498623141123751771
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 5498623141123751771}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.012155309, z: 0.0000000012159267}
+  m_LocalPosition: {x: -0.0000000022782771, y: -0.01610986, z: -0.03151488}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -186,8 +241,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 991603027682463634}
-  displayName: Slot
+  displayName: Attach
+  color: {r: 1, g: 1, b: 1, a: 1}
   mustFitExactly: 1
+  mustBeFilledForCustomer: 1
 --- !u!1001 &3305193436654222615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -318,6 +375,9 @@ PrefabInstance:
       addedObject: {fileID: 5457648844783316417}
     - targetCorrespondingSourceObject: {fileID: 814257418285064221, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 4269104881367187715}
+    - targetCorrespondingSourceObject: {fileID: 814257418285064221, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1107820954627869603}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
@@ -362,6 +422,17 @@ MonoBehaviour:
 --- !u!114 &4895660050854314969 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7939431676588080846, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
+  m_PrefabInstance: {fileID: 3305193436654222615}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d185ef94ab55d994ebe7579ea0e57878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5051655553913422885 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7765738603012536626, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
   m_PrefabInstance: {fileID: 3305193436654222615}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

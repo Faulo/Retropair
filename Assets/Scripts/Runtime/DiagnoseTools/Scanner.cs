@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 
@@ -12,13 +14,7 @@ namespace Runtime {
         [SerializeField]
         SpriteRenderer attachedRenderer;
 
-        [SerializeField]
-        AudioClip sfxSuccess = default;
-        [SerializeField]
-        AudioClip sfxFail = default;
-
-        [SerializeField]
-        AudioSource sfxSource = default;
+        internal Action<ScanStatus, Vector3> onStatusChange;
 
         void OnEnable() {
             slot.onAttachDevice += UpdateStatus;
@@ -34,20 +30,18 @@ namespace Runtime {
             UpdateStatus(slot.attachedDevice);
         }
 
+        void FixedUpdate() {
+            UpdateStatus(slot.attachedDevice);
+        }
+
         void UpdateStatus(Device device) {
-            ScanStatus previousStatus = status;
-            status = CalculateStatus(device);
+            var newStatus = CalculateStatus(device);
+            if (status != newStatus) {
+                status = newStatus;
+                onStatusChange?.Invoke(status, slot.transform.position);
+            }
 
             UpdateColor();
-
-            if (status == ScanStatus.IsWorking && status != previousStatus) {
-                sfxSource.resource = sfxSuccess;
-                sfxSource.Play();
-            }
-            if (status == ScanStatus.IsBroken && status != previousStatus) {
-                sfxSource.resource = sfxFail;
-                sfxSource.Play();
-            }
         }
 
         void UpdateStatus() {
@@ -64,7 +58,7 @@ namespace Runtime {
                 return ScanStatus.Nothing;
             }
 
-            return attachedDevice.isWorking
+            return attachedDevice.GetComponentsInChildren<Device>().All(d => d.isWorking)
                 ? ScanStatus.IsWorking
                 : ScanStatus.IsBroken;
         }

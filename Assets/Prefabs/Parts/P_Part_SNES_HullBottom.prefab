@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5457648844783316417}
   - component: {fileID: 3112421544528130203}
   m_Layer: 0
-  m_Name: Slot_HullTop
+  m_Name: Slot_Hull_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 6511035948984214078}
+  displayName: Slot
+  mustFitExactly: 1
 --- !u!1 &3306021944361337407
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +92,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referencePart: {fileID: 8178290371040335649}
+  displayName: Slot
+  mustFitExactly: 1
 --- !u!1001 &3305193436654222615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -178,6 +182,14 @@ PrefabInstance:
       propertyPath: bounds
       value: 
       objectReference: {fileID: 2495555596329040721}
+    - target: {fileID: 6330112784332115007, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
+      propertyPath: partId
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330112784332115007, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
+      propertyPath: displayName
+      value: Hull Bottom
+      objectReference: {fileID: 0}
     - target: {fileID: 6489488869199364855, guid: 9a196caf7bf01e94ebf73789b22ba1c6, type: 3}
       propertyPath: m_IsActive
       value: 0

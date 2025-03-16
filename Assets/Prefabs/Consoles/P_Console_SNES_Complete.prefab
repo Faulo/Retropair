@@ -258,19 +258,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2367756069441675839, guid: 1fdaa35e5f4c61740bfd8e81bfe63797, type: 3}
       propertyPath: m_Name
-      value: P_Part_SNES_HullBottom Variant
+      value: P_Console_SNES_Complete
       objectReference: {fileID: 0}
     - target: {fileID: 9166439218081943835, guid: 1fdaa35e5f4c61740bfd8e81bfe63797, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9166439218081943835, guid: 1fdaa35e5f4c61740bfd8e81bfe63797, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3695
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9166439218081943835, guid: 1fdaa35e5f4c61740bfd8e81bfe63797, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.4375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9166439218081943835, guid: 1fdaa35e5f4c61740bfd8e81bfe63797, type: 3}
       propertyPath: m_LocalRotation.w

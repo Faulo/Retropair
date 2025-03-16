@@ -17,6 +17,7 @@ namespace Runtime {
         [SerializeField]
         internal string displayName;
 
+#if UNITY_EDITOR
         void OnValidate() {
             if (!root) {
                 return;
@@ -28,14 +29,20 @@ namespace Runtime {
 
             deviceId = bounds.deviceId;
             partId = bounds.partId;
-            displayName = bounds.partId.ToString();
+            displayName = UnityEditor.ObjectNames.NicifyVariableName(bounds.partId.ToString());
 
             var position = -bounds.pivot;
 
             if (root.transform.localPosition != position) {
                 root.transform.localPosition = position;
             }
+
+            if (!bounds.gameObject.activeSelf) {
+                bounds.gameObject.SetActive(true);
+                UnityEditor.EditorUtility.SetDirty(gameObject);
+            }
         }
+#endif
 
         internal bool TryGetPartById(DeviceId deviceId, PartId partId, out Device device) {
             foreach (var d in GetComponentsInChildren<Device>()) {

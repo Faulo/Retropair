@@ -25,6 +25,7 @@ namespace Runtime {
         internal Action<Device> onAttachDevice;
         internal Action onFreeDevice;
 
+#if UNITY_EDITOR
         void OnValidate() {
             if (!referencePart) {
                 return;
@@ -33,7 +34,14 @@ namespace Runtime {
             if (transform.localPosition != referencePart.pivot) {
                 transform.localPosition = referencePart.pivot;
             }
+
+            string name = $"Slot_{referencePart.name}";
+            if (gameObject.name != name) {
+                gameObject.name = name;
+                UnityEditor.EditorUtility.SetDirty(gameObject);
+            }
         }
+#endif
 
         internal bool CanFit(Device device) {
             if (mustFitExactly) {
@@ -49,8 +57,6 @@ namespace Runtime {
             return true;
         }
 
-        bool isFree => transform.childCount == 0;
-
         void OnEnable() {
             UpdateCollider(true);
         }
@@ -63,29 +69,36 @@ namespace Runtime {
             UpdateCollider();
         }
 
-        internal bool hasAttachedDevice => attachedDevice;
-        internal Device attachedDevice { get; private set; }
+        internal bool hasAttachedDevice => transform.childCount != 0;
+        internal Device attachedDevice => hasAttachedDevice
+            ? transform.GetChild(0).GetComponent<Device>()
+            : null;
+        bool hadAttachedDevice;
 
         BoxCollider _collider;
+        bool hasCollider => _collider;
 
-        bool wasFree => _collider;
         void UpdateCollider(bool forceUpdate = false) {
-            if (forceUpdate || isFree != wasFree) {
-                if (_collider) {
-                    Destroy(_collider);
-                    _collider = null;
+            if (forceUpdate || hadAttachedDevice != hasAttachedDevice) {
+                if (hasAttachedDevice) {
+                    if (hasCollider) {
+                        Destroy(_collider);
+                        _collider = null;
+                    }
                 } else {
-                    _collider = gameObject.AddComponent<BoxCollider>();
-                    _collider.size = referencePart.bounds.size;
+                    if (!hasCollider) {
+                        _collider = gameObject.AddComponent<BoxCollider>();
+                        _collider.size = referencePart.bounds.size;
+                    }
                 }
 
-                if (transform.childCount > 0 && transform.GetChild(0).TryGetComponent<Device>(out var d)) {
-                    attachedDevice = d;
+                if (hasAttachedDevice) {
                     onAttachDevice?.Invoke(attachedDevice);
                 } else {
-                    attachedDevice = null;
                     onFreeDevice?.Invoke();
                 }
+
+                hadAttachedDevice = hasAttachedDevice;
             }
         }
 
@@ -98,6 +111,7 @@ namespace Runtime {
                         + " | partID match " + attachedDevice.partId + " " + (attachedDevice.partId == referencePartId ? "==" : "!=") + " " + referencePartId
                         + " ]\n";
             }
+
             Debug.Log(report);
         }
     }

@@ -42,12 +42,12 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
 
             // arrival monolog
             onMoodChanged?.Invoke(CharacterMood.Initial);
-            yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Arrival);
+            yield return monologPlayer.PlayMonologHighPrioBlocking(CharacterMonologSection.Arrival);
 
             // spawn console and trigger main monolog
             SpawnVisitorConsole();
             yield return new WaitWhile(() => isHoldingDevice);
-            monologPlayer.PlayMonologParallel(CharacterMonologSection.Main);
+            monologPlayer.PlayMonologLowPrioParallel(CharacterMonologSection.Main);
 
             // visitor waits while device not successfully returned
             while (true) {
@@ -61,15 +61,16 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
 
                 // fail monolog if device was returned, but requirements not met
                 onMoodChanged?.Invoke(CharacterMood.Deny);
-                yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Failure);
+                yield return monologPlayer.PlayMonologHighPrioBlocking(CharacterMonologSection.Failure);
 
+                onMoodChanged?.Invoke(CharacterMood.Initial);
                 SetInteractionWithVisitorConsoleAllowed(true);
-                yield return new WaitWhile(() => isHoldingDevice);
+                yield return new WaitUntil(() => !isHoldingDevice);
             }
 
             // device was returned successfully
             onMoodChanged?.Invoke(CharacterMood.Success);
-            yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Success);
+            yield return monologPlayer.PlayMonologHighPrioBlocking(CharacterMonologSection.Success);
 
             // success monolog done, cleanup scene
             monologPlayer.Clear();

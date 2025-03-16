@@ -14,12 +14,12 @@ public sealed class CharacterMonologLineDisplayer : MonoBehaviour
     [SerializeField]
     RawImage buttonHintImage = default;
 
-    public float buttonHintDelay = 5.0f;
+    public float buttonHintDelay = 2.0f;
 
     bool isButtonHintShown = true;
 
     void Start() {
-        DisplayLine("");
+        DisplayLine("", true);
         CharacterMonologPlayer.onLineChanged += DisplayLine;
     }
 
@@ -27,10 +27,10 @@ public sealed class CharacterMonologLineDisplayer : MonoBehaviour
         CharacterMonologPlayer.onLineChanged -= DisplayLine;
     }
 
-    void DisplayLine(string line) {
+    void DisplayLine(string line, bool shouldHideHint) {
         textMesh.text = line;
 
-        if (isButtonHintShown && line.IsNullOrEmpty()) {
+        if (shouldHideHint || (isButtonHintShown && line.IsNullOrEmpty())) {
             SetButtonHintShown(false);
         }
         else if (!isButtonHintShown) {

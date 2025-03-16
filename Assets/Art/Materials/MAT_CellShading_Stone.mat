@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_CellShading_Glass
-  m_Shader: {fileID: -6465566751694194690, guid: 45b66dc312fd479429cc36c9feb2e448, type: 3}
-  m_Parent: {fileID: -876546973899608171, guid: 45b66dc312fd479429cc36c9feb2e448, type: 3}
+  m_Name: MAT_CellShading_Stone
+  m_Shader: {fileID: -6465566751694194690, guid: a29cf5744a56a3d449c174226114817a, type: 3}
+  m_Parent: {fileID: 2100000, guid: 022f4fe413a609d479fbe099c82f6e99, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -25,11 +25,9 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats:
-    - _QueueControl: 0
-    - _ShadowStrength: 0.36
+    m_Floats: []
     m_Colors:
-    - _BaseColor: {r: 0, g: 0, b: 0, a: 0.03529412}
+    - _BaseColor: {r: 0.2627451, g: 0.2734364, b: 0.30980393, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &3152098132751118614

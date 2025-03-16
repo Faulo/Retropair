@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Runtime;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -26,7 +27,7 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
     GameObject currentVisitorObject = default;
     GameObject currentVisitorConsoleObject = default;
 
-    bool isDeviceReturned = false;
+    bool wasDeviceGrabbed = false;
 
     IEnumerator Start() {
         while (true) {
@@ -43,30 +44,28 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
 
             // spawn console and trigger main monolog
             SpawnVisitorConsole();
-            monologPlayer.PlayMonologParallel(CharacterMonologSection.Main);
             yield return WaitForVisitorConsolePickedUp();
+            monologPlayer.PlayMonologParallel(CharacterMonologSection.Main);
 
             // while device not successfully returned
-            while (!isDeviceReturned || !AreVisitorRequirementsMet()) {
+            while (!WasDeviceReturned() || !AreVisitorRequirementsMet()) {
 
                 // fail monolog if device was returned, but requirements not met
-                if (isDeviceReturned) {
+                if (WasDeviceReturned()) {
                     onMoodChanged?.Invoke(CharacterMood.Deny);
                     yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Failure);
                 }
-
                 yield return null;
             }
 
             // device was returned successfully
-            DisallowInteractionWithVisitorConsole();
+            SetInteractionWithVisitorConsoleAllowed(false);
             onMoodChanged?.Invoke(CharacterMood.Success);
             yield return monologPlayer.PlayMonologBlocking(CharacterMonologSection.Success);
 
             // success monolog done, cleanup scene
             DespawnVisitor();
             DespawnVisitorConsole();
-            isDeviceReturned = false;
         }
     }
 
@@ -96,17 +95,30 @@ public sealed class CharacterVisitDirector : MonoBehaviour {
         }
     }
 
+    bool WasDeviceReturned() {
+        // TODO
+        return false;
+    }
+
     bool AreVisitorRequirementsMet() {
         // TODO
         return false;
     }
 
-    void DisallowInteractionWithVisitorConsole() {
-        // TODO
+    void SetInteractionWithVisitorConsoleAllowed(bool newAllowed) {
+        currentVisitorConsoleObject.GetComponent<Device>().isTangible = newAllowed;
     }
 
     IEnumerator WaitForVisitorConsolePickedUp() {
-        // TODO
-        yield break;
+        Player.onDeviceGrabbed += HandleDevicePickedUp;
+        yield return new WaitUntil(() => wasDeviceGrabbed);
+        Player.onDeviceGrabbed -= HandleDevicePickedUp;
+        wasDeviceGrabbed = false;
+    }
+
+    void HandleDevicePickedUp(Device pickedUpDevice) {
+        if (pickedUpDevice == currentVisitorConsoleObject.GetComponent<Device>()) {
+            wasDeviceGrabbed = true;
+        }
     }
 }

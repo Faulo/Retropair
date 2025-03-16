@@ -7,7 +7,7 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
 {
     public float lineDelaySeconds = 3.0f;
 
-    public static event Action<string> onLineChanged;
+    public static event Action<string, bool> onLineChanged;
     public static event Action onMonologFinished;
 
     Story currentStory = default;
@@ -15,6 +15,8 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
     Coroutine currentMonologCoroutine = default;
 
     bool lineAdvanceRequested = false;
+
+    bool shouldHideHint = false;
 
     void Start() {
         Runtime.Player.onDialogueLineAdvanceIntent += HandleLineAdvanceIntent;
@@ -29,6 +31,10 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
             return;
         }
         currentStory = monologProvider.GetStory();
+    }
+
+    public void SetHideHint(bool newShouldHideHint) {
+        shouldHideHint = newShouldHideHint;
     }
 
     public void PlayMonologParallel(CharacterMonologSection section) {
@@ -53,7 +59,7 @@ public sealed class CharacterMonologPlayer : MonoBehaviour
         while (currentStory.canContinue) {
 
             string currentLine = currentStory.Continue();
-            onLineChanged?.Invoke(currentLine);
+            onLineChanged?.Invoke(currentLine, shouldHideHint);
 
             yield return new WaitUntil(() => lineAdvanceRequested);
             lineAdvanceRequested = false;

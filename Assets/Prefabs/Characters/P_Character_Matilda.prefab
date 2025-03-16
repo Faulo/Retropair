@@ -105,6 +105,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -657292625, guid: 51b28ea1968aa744ab60000f08ef855d, type: 3}
     - target: {fileID: 8079891254811170481, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
+      propertyPath: blinkProbabilityPerSecond
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079891254811170481, guid: 51380a0c3259b5f428cf518ab06d21c5, type: 3}
       propertyPath: blinkTimeRangeInSeconds.x
       value: 0.05
       objectReference: {fileID: 0}

@@ -72,7 +72,12 @@ namespace Runtime {
                     }
                 } else {
                     if (hit.collider.TryGetComponent<PartSlot>(out var slot)) {
-                        slots.Add(hit.distance, slot);
+                        float distance = hit.distance;
+                        while (slots.ContainsKey(distance)) {
+                            distance += Mathf.Epsilon;
+                        }
+
+                        slots.Add(distance, slot);
                     } else {
                         if (surfaceDistance > hit.distance) {
                             surfaceDistance = hit.distance;

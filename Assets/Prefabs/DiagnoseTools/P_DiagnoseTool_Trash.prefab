@@ -1119,6 +1119,7 @@ MonoBehaviour:
   - {fileID: 609296469617689900, guid: 2be3ca9f6ff253d4bba6f45e8b3156a7, type: 3}
   - {fileID: 1529368737132911505, guid: 964cfdfc164e1114fadb6ba1339e82b7, type: 3}
   - {fileID: 8734097496576496801, guid: 5ec9de4247a224a4f8860eba72972544, type: 3}
+  - {fileID: 2367756069441675839, guid: 4154f9946bd9c254b97717cfbe389968, type: 3}
   destructionChance: 0.2
   notWorkingChance: 0.5
 --- !u!114 &8358009501985155968 stripped
